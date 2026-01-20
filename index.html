@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FirstGig - Your First Job Starts Here</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.3; }
+    }
+    .animate-pulse-slow {
+      animation: pulse 4s ease-in-out infinite;
+    }
+    .animate-pulse-slow-delayed-1 {
+      animation: pulse 4s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+    .animate-pulse-slow-delayed-2 {
+      animation: pulse 4s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+  </style>
+</head>
+<body class="bg-black">
+  <!-- Animated background -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-20 left-20 w-96 h-96 bg-sky-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
+    <div class="absolute top-40 right-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow-delayed-1"></div>
+    <div class="absolute bottom-20 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow-delayed-2"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="relative bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 p-1">
+    <div class="bg-black">
+      <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <svg class="text-sky-400" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <svg class="absolute -top-1 -right-1 text-yellow-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-4xl font-black bg-gradient-to-r from-sky-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              FirstGig
+            </h1>
+            <p class="text-gray-400 text-sm font-medium">Your career starts now ⚡</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center max-w-4xl mx-auto">
+      <div class="flex items-center justify-center gap-2 mb-6">
+        <svg class="text-yellow-400 fill-yellow-400 animate-pulse" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <span class="text-sky-400 font-bold text-sm uppercase tracking-wider">Real Jobs • Real Pay</span>
+        <svg class="text-yellow-400 fill-yellow-400 animate-pulse" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+      </div>
+      <h2 class="text-6xl md:text-7xl font-black text-white mb-6 leading-tight">
+        Your First Job
+        <br>
+        <span class="bg-gradient-to-r from-sky-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Starts Here
+        </span>
+      </h2>
+      <p class="text-xl text-gray-300 mb-8 font-medium">
+        Safe, vetted opportunities with Holding Alpha brands.
+        <br>
+        <span class="text-sky-400">Earn up to $100</span> doing work that actually matters.
+      </p>
+      <div class="flex items-center justify-center gap-4 text-sm">
+        <div class="flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 rounded-full px-4 py-2">
+          <svg class="text-sky-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span class="text-sky-400 font-semibold">Quick Apply</span>
+        </div>
+        <div class="flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-2">
+          <svg class="text-purple-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+          </svg>
+          <span class="text-purple-400 font-semibold">Gen Alpha Built</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jobs Grid -->
+  <section class="relative max-w-7xl mx-auto px-6 pb-20">
+    <h3 class="text-3xl font-black text-white mb-10 text-center">
+      <span class="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">Open Positions</span>
+    </h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="jobs-grid">
+      <!-- Jobs will be inserted here by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Application Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 overflow-y-auto hidden">
+    <button onclick="closeModal()" class="fixed top-4 right-4 z-50 bg-black/80 border border-gray-600 rounded-full p-3 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-400 transition-all shadow-lg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+    
+    <div class="min-h-full flex items-start justify-center p-6 py-12">
+      <div class="bg-gradient-to-br from-gray-900 to-black rounded-3xl max-w-2xl w-full border border-gray-800 shadow-2xl">
+        <div id="modal-header" class="p-1 rounded-t-3xl">
+          <div class="bg-black p-6 rounded-t-2xl">
+            <h3 id="modal-title" class="text-3xl font-black text-white"></h3>
+            <p id="modal-age" class="text-gray-400 text-sm font-semibold uppercase tracking-wide mt-1"></p>
+          </div>
+        </div>
+
+        <div class="p-8">
+          <div class="mb-8">
+            <h4 class="font-bold text-white mb-3 text-lg">About the Role</h4>
+            <p id="modal-description" class="text-gray-300 mb-6 leading-relaxed"></p>
+            <h4 class="font-bold text-white mb-3 text-lg">Requirements</h4>
+            <ul id="modal-requirements" class="space-y-3">
+              <!-- Requirements will be inserted here -->
+            </ul>
+          </div>
+
+          <form id="application-form" class="space-y-5">
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-bold text-gray-300 mb-2">Full Name *</label>
+                <input type="text" name="name" required class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-300 mb-2">Age *</label>
+                <input type="number" name="age" required class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-300 mb-2">Email *</label>
+              <input type="email" name="email" required class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-300 mb-2">Experience / Background</label>
+              <textarea name="experience" rows="3" class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all resize-none" placeholder="Tell us about any relevant experience..."></textarea>
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-300 mb-2">Portfolio / Work Samples</label>
+              <input type="url" name="portfolio" placeholder="https://" class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-gray-300 mb-2">Why do you want this role? *</label>
+              <textarea name="why" rows="4" required class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all resize-none" placeholder="What interests you about this position?"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="w-full text-white font-black py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg">
+              Submit Application ✨
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="relative bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 p-1 mt-20">
+    <div class="bg-black">
+      <div class="max-w-7xl mx-auto px-6 py-10 text-center">
+        <p class="text-gray-400 font-semibold">FirstGig is a product of <span class="text-white">Holding Alpha</span></p>
+        <p class="mt-2 text-gray-500 text-sm">Safe opportunities. Real growth. Built for Gen Alpha.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const jobs = [
+      {
+        id: 1,
+        title: 'Editorial',
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path></svg>`,
+        description: 'Write daily/weekly edits for Alpha Vogue and brand content',
+        ageRange: 'Gen Alpha friendly',
+        gradient: 'from-sky-400 to-blue-500',
+        requirements: ['Strong writing skills', 'Understanding of trends', 'Consistent availability']
+      },
+      {
+        id: 2,
+        title: 'Partnerships',
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"></path><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"></path><path d="m21 3 1 11h-2"></path><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"></path><path d="M3 4h8"></path></svg>`,
+        description: 'Organize and join calls with high-profile partners',
+        ageRange: 'Adult (23+)',
+        gradient: 'from-purple-400 to-pink-500',
+        requirements: ['Professional communication', 'Organization skills', 'Available for calls']
+      },
+      {
+        id: 3,
+        title: 'Assistant',
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>`,
+        description: 'Email management, call coordination, event tracking, daily support',
+        ageRange: 'Gen Alpha friendly',
+        gradient: 'from-cyan-400 to-teal-500',
+        requirements: ['Detail-oriented', 'Reliable', 'Good communication']
+      },
+      {
+        id: 4,
+        title: 'Graphic Designer',
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"></path></svg>`,
+        description: 'Create presentations, websites, logos, product designs, and apparel graphics',
+        ageRange: 'Gen Alpha friendly',
+        gradient: 'from-orange-400 to-red-500',
+        requirements: ['Design software skills', 'Portfolio required', 'Creative mindset']
+      },
+      {
+        id: 5,
+        title: 'Social Media Manager',
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>`,
+        description: 'Maintain consistent content and posts across all brands',
+        ageRange: 'Gen Alpha friendly',
+        gradient: 'from-pink-400 to-rose-500',
+        requirements: ['Social media expertise', 'Content creation skills', 'Consistency']
+      },
+      {
+        id: 6,
+        title: 'Marketer',
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>`,
+        description: 'Promote deals, partnerships, products, and latest trends',
+        ageRange: 'Gen Alpha friendly',
+        gradient: 'from-green-400 to-emerald-500',
+        requirements: ['Marketing knowledge', 'Trend awareness', 'Strategic thinking']
+      },
+      {
+        id: 7,
+        title: 'Photographer',
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>`,
+        description: 'Product shoots, campaign content, and brand visuals',
+        ageRange: 'Gen Alpha friendly',
+        gradient: 'from-yellow-400 to-amber-500',
+        requirements: ['Photography equipment', 'Portfolio required', 'Time commitment']
+      }
+    ];
+
+    let selectedJob = null;
+
+    // Render job cards
+    function renderJobs() {
+      const grid = document.getElementById('jobs-grid');
+      grid.innerHTML = jobs.map(job => `
+        <div
+          class="group relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-6 border border-gray-800 hover:border-gray-600 hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden"
+          onclick="openModal(${job.id})"
+        >
+          <div class="absolute inset-0 bg-gradient-to-br ${job.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+          <div class="relative">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="bg-gradient-to-br ${job.gradient} p-3 rounded-xl shadow-lg text-white">
+                ${job.icon}
+              </div>
+              <div class="flex-1">
+                <h4 class="font-black text-xl text-white mb-1">${job.title}</h4>
+                <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${job.ageRange}</p>
+              </div>
+            </div>
+            <p class="text-gray-300 text-sm mb-4 leading-relaxed">${job.description}</p>
+            <button class="flex items-center gap-2 text-sky-400 font-bold text-sm group-hover:gap-3 transition-all">
+              Apply Now 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Open modal
+    function openModal(jobId) {
+      selectedJob = jobs.find(j => j.id === jobId);
+      if (!selectedJob) return;
+
+      document.getElementById('modal').classList.remove('hidden');
+      document.getElementById('modal-header').className = `bg-gradient-to-r ${selectedJob.gradient} p-1 rounded-t-3xl`;
+      document.getElementById('modal-title').textContent = selectedJob.title;
+      document.getElementById('modal-age').textContent = selectedJob.ageRange;
+      document.getElementById('modal-description').textContent = selectedJob.description;
+      document.getElementById('submit-btn').className = `w-full bg-gradient-to-r ${selectedJob.gradient} text-white font-black py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg`;
+      
+      const reqList = document.getElementById('modal-requirements');
+      reqList.innerHTML = selectedJob.requirements.map(req => `
+        <li class="text-gray-300 flex items-start gap-3">
+          <span class="bg-gradient-to-r ${selectedJob.gradient} bg-clip-text text-transparent font-bold">✦</span>
+          ${req}
+        </li>
+      `).join('');
+
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.body.style.overflow = '';
+      document.getElementById('application-form').reset();
+    }
+
+    // Handle form submission
+    document.getElementById('application-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Application submitted! We\'ll be in touch soon.');
+      closeModal();
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Initialize
+    renderJobs();
+  </script>
+</body>
+</html>
