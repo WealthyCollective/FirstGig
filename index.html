@@ -1,337 +1,642 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FirstGig - Your First Job Starts Here</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
-  <style>
-    @keyframes pulse {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 0.3; }
-    }
-    .animate-pulse-slow {
-      animation: pulse 4s ease-in-out infinite;
-    }
-    .animate-pulse-slow-delayed-1 {
-      animation: pulse 4s ease-in-out infinite;
-      animation-delay: 1s;
-    }
-    .animate-pulse-slow-delayed-2 {
-      animation: pulse 4s ease-in-out infinite;
-      animation-delay: 2s;
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FirstGig — Your Career Starts Now</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+
+/* RESET */
+input[type=text],input[type=email],input[type=number],input[type=search],textarea,select{border:none;outline:none;background:transparent;color:inherit;width:100%}
+input::placeholder,textarea::placeholder{color:#4b5563}
+input:focus,textarea:focus,select:focus{outline:none;box-shadow:none}
+/* RESET */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#000;font-family:'Inter',sans-serif}
+button{background:none;border:none;cursor:pointer;font-family:inherit;padding:0}
+input,textarea,select{font-family:inherit}
+a{text-decoration:none;color:inherit}
+
+/* POSITION */
+.relative{position:relative}
+.absolute{position:absolute}
+.fixed{position:fixed}
+.sticky{position:sticky;top:0}
+.inset-0{top:0;right:0;bottom:0;left:0;position:absolute}
+.inset-x-0{left:0;right:0}
+.top-0{top:0}.bottom-0{bottom:0}.left-0{left:0}.right-0{right:0}
+.top-1{top:4px}.right-1{right:4px}
+.top-20{top:80px}
+.top-2\.5{top:10px}.right-2\.5{right:10px}.left-2\.5{left:10px}
+.-top-1{top:-4px}.-right-1{right:-4px}
+.top-full{top:100%}
+.left-1\/2{left:50%}
+.left-1\/3{left:33.333%}
+.left-0\.5{left:2px}.left-5{left:20px}
+.right-4{right:16px}
+.bottom-6{bottom:24px}
+
+/* Z-INDEX */
+.z-0{z-index:0}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}
+.z-\[200\]{z-index:200}
+
+/* DISPLAY */
+.block{display:block}.hidden{display:none}
+.flex{display:flex}.inline-flex{display:inline-flex}
+.grid{display:grid}.inline{display:inline}.inline-block{display:inline-block}
+
+/* FLEX */
+.flex-col{flex-direction:column}.flex-row{flex-direction:row}
+.flex-wrap{flex-wrap:wrap}
+.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}
+.items-center{align-items:center}.items-start{align-items:flex-start}.items-end{align-items:flex-end}
+.justify-center{justify-content:center}.justify-between{justify-content:space-between}
+.justify-around{justify-content:space-around}
+.ml-auto{margin-left:auto}.mx-auto{margin-left:auto;margin-right:auto}
+
+/* GRID */
+.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* GAP */
+.gap-0\.5{gap:2px}.gap-1{gap:4px}.gap-1\.5{gap:6px}
+.gap-2{gap:8px}.gap-2\.5{gap:10px}.gap-3{gap:12px}.gap-4{gap:16px}
+
+/* SPACING */
+.space-y-1>*+*{margin-top:4px}
+.space-y-2>*+*{margin-top:8px}
+.space-y-3>*+*{margin-top:12px}
+.space-y-4>*+*{margin-top:16px}
+.p-0{padding:0}.p-1{padding:4px}.p-1\.5{padding:6px}
+.p-2{padding:8px}.p-3{padding:12px}.p-3\.5{padding:14px}.p-4{padding:16px}.p-5{padding:20px}
+.px-1\.5{padding-left:6px;padding-right:6px}
+.px-2{padding-left:8px;padding-right:8px}
+.px-2\.5{padding-left:10px;padding-right:10px}
+.px-3{padding-left:12px;padding-right:12px}
+.px-4{padding-left:16px;padding-right:16px}
+.px-5{padding-left:20px;padding-right:20px}
+.py-0\.5{padding-top:2px;padding-bottom:2px}
+.py-1{padding-top:4px;padding-bottom:4px}
+.py-1\.5{padding-top:6px;padding-bottom:6px}
+.py-2{padding-top:8px;padding-bottom:8px}
+.py-2\.5{padding-top:10px;padding-bottom:10px}
+.py-3{padding-top:12px;padding-bottom:12px}
+.py-5{padding-top:20px;padding-bottom:20px}
+.py-6{padding-top:24px;padding-bottom:24px}
+.py-14{padding-top:56px;padding-bottom:56px}
+.pt-5{padding-top:20px}.pt-8{padding-top:32px}
+.pb-4{padding-bottom:16px}.pb-6{padding-bottom:24px}.pb-20{padding-bottom:80px}
+.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px)}
+.pr-4{padding-right:16px}
+.mt-0\.5{margin-top:2px}.mt-1{margin-top:4px}.mt-1\.5{margin-top:6px}
+.mt-2\.5{margin-top:10px}.mt-4{margin-top:16px}
+.mb-0\.5{margin-bottom:2px}.mb-1{margin-bottom:4px}.mb-1\.5{margin-bottom:6px}
+.mb-2{margin-bottom:8px}.mb-2\.5{margin-bottom:10px}.mb-3{margin-bottom:12px}
+.mb-4{margin-bottom:16px}.mb-5{margin-bottom:20px}.mb-6{margin-bottom:24px}.mb-7{margin-bottom:28px}
+.ml-2{margin-left:8px}.ml-4{margin-left:16px}
+
+/* SIZING */
+.w-2{width:8px}.w-4{width:16px}.w-10{width:40px}.w-14{width:56px}
+.w-52{width:208px}.w-64{width:256px}.w-72{width:288px}.w-full{width:100%}
+.h-px{height:1px}.h-1{height:4px}.h-2{height:8px}.h-4{height:16px}.h-5{height:20px}
+.h-14{height:56px}.h-64{height:256px}
+.max-w-xs{max-width:320px}.max-w-sm{max-width:384px}
+.max-w-xl{max-width:576px}.max-w-5xl{max-width:1024px}
+.min-h-screen{min-height:100vh}.min-w-0{min-width:0}
+
+/* OVERFLOW */
+.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}
+.pointer-events-none{pointer-events:none}
+
+/* TYPOGRAPHY */
+.text-2xl{font-size:1.5rem;line-height:2rem}
+.text-3xl{font-size:1.875rem;line-height:2.25rem}
+.text-xl{font-size:1.25rem;line-height:1.75rem}
+.font-bold{font-weight:700}.font-semibold{font-weight:600}.font-medium{font-weight:500}
+.leading-none{line-height:1}.leading-snug{line-height:1.375}
+.tracking-widest{letter-spacing:.1em}
+.uppercase{text-transform:uppercase}.text-center{text-align:center}
+.whitespace-nowrap{white-space:nowrap}
+.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.resize-none{resize:none}.outline-none{outline:none}
+
+/* COLORS - TEXT */
+.text-white{color:#fff}.text-black{color:#000}
+.text-gray-300{color:#d1d5db}.text-gray-400{color:#9ca3af}.text-gray-500{color:#6b7280}
+.text-gray-600{color:#4b5563}.text-gray-700{color:#374151}.text-gray-900{color:#111827}
+.text-sky-400{color:#38bdf8}.text-sky-500{color:#0ea5e9}.text-sky-700{color:#0369a1}
+.text-purple-400{color:#c084fc}
+.text-yellow-300{color:#fde047}.text-yellow-400{color:#facc15}.text-yellow-500{color:#eab308}
+.text-green-400{color:#4ade80}.text-emerald-400{color:#34d399}
+.text-red-700{color:#b91c1c}.text-red-400{color:#f87171}
+.text-transparent{color:transparent}
+.fill-yellow-400{fill:#facc15}
+
+/* COLORS - BG */
+.bg-black{background-color:#000}.bg-white{background-color:#fff}
+.bg-transparent{background-color:transparent}
+.bg-gray-50{background-color:#f9fafb}.bg-gray-100{background-color:#f3f4f6}
+.bg-gray-800{background-color:#1f2937}.bg-gray-900{background-color:#111827}
+.bg-gray-950{background-color:#030712}
+.bg-sky-50{background-color:#f0f9ff}.bg-sky-500{background-color:#0ea5e9}
+.bg-red-50{background-color:#fef2f2}.bg-red-500{background-color:#ef4444}
+.bg-green-600{background-color:#16a34a}
+.bg-black\/80{background-color:rgba(0,0,0,.8)}
+.bg-black\/95{background-color:rgba(0,0,0,.95)}
+.bg-white\/3{background-color:rgba(255,255,255,.03)}
+.bg-white\/5{background-color:rgba(255,255,255,.05)}
+.bg-white\/8{background-color:rgba(255,255,255,.08)}
+.bg-white\/10{background-color:rgba(255,255,255,.1)}
+.bg-sky-500\/5{background-color:rgba(14,165,233,.05)}
+.bg-sky-400\/10{background-color:rgba(56,189,248,.1)}
+.bg-green-500\/10{background-color:rgba(34,197,94,.1)}
+.bg-yellow-400\/10{background-color:rgba(250,204,21,.1)}
+.bg-emerald-400\/10{background-color:rgba(52,211,153,.1)}
+.bg-purple-400\/10{background-color:rgba(192,132,252,.1)}
+.bg-pink-500{background-color:#ec4899}
+.bg-purple-500{background-color:#a855f7}
+.bg-sky-500{background-color:#0ea5e9}
+
+/* GRADIENTS */
+.bg-gradient-to-r{background-image:linear-gradient(to right,var(--g-from,transparent),var(--g-via,var(--g-to,transparent)),var(--g-to,transparent))}
+.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--g-from,transparent),var(--g-to,transparent))}
+.from-sky-400{--g-from:#38bdf8}
+.from-sky-500{--g-from:#0ea5e9}
+.from-yellow-400\/20{--g-from:rgba(250,204,21,.2)}
+.from-emerald-400{--g-from:#34d399}
+.via-purple-400{--g-via:#c084fc}
+.via-purple-500{--g-via:#a855f7}
+.to-purple-500{--g-to:#a855f7}
+.to-pink-400{--g-to:#f472b6}
+.to-pink-500{--g-to:#ec4899}
+.to-amber-400\/10{--g-to:rgba(251,191,36,.1)}
+.to-green-500{--g-to:#22c55e}
+.bg-clip-text{-webkit-background-clip:text;background-clip:text}
+
+/* BORDERS */
+.border{border-width:1px;border-style:solid;border-color:#e5e7eb}
+.border-0{border-width:0!important}
+.border-b{border-bottom-width:1px;border-bottom-style:solid}
+.border-t{border-top-width:1px;border-top-style:solid}
+.border-white{border-color:#fff}
+.border-white\/5{border-color:rgba(255,255,255,.05)}
+.border-white\/8{border-color:rgba(255,255,255,.08)}
+.border-white\/10{border-color:rgba(255,255,255,.1)}
+.border-white\/20{border-color:rgba(255,255,255,.2)}
+.border-white\/\[0\.06\]{border-color:rgba(255,255,255,.06)}
+.border-gray-100{border-color:#f3f4f6}.border-gray-200{border-color:#e5e7eb}
+.border-gray-300{border-color:#d1d5db}
+.border-sky-200{border-color:#bae6fd}.border-sky-300{border-color:#7dd3fc}
+.border-sky-400\/20{border-color:rgba(56,189,248,.2)}
+.border-sky-400\/30{border-color:rgba(56,189,248,.3)}
+.border-yellow-400\/30{border-color:rgba(250,204,21,.3)}
+.border-yellow-400\/40{border-color:rgba(250,204,21,.4)}
+.border-green-500\/20{border-color:rgba(34,197,94,.2)}
+.border-green-500\/30{border-color:rgba(34,197,94,.3)}
+.border-emerald-400\/30{border-color:rgba(52,211,153,.3)}
+.border-red-200{border-color:#fecaca}
+
+/* BORDER RADIUS */
+.rounded-full{border-radius:9999px}
+.rounded-lg{border-radius:8px}
+.rounded-xl{border-radius:12px}
+.rounded-2xl{border-radius:16px}
+.rounded-3xl{border-radius:24px}
+.rounded-t-2xl{border-top-left-radius:16px;border-top-right-radius:16px}
+.rounded-t-3xl{border-top-left-radius:24px;border-top-right-radius:24px}
+
+/* SHADOW */
+.shadow{box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.08)}
+.shadow-xl{box-shadow:0 20px 25px -5px rgba(0,0,0,.3),0 10px 10px -5px rgba(0,0,0,.2)}
+.shadow-2xl{box-shadow:0 25px 50px -12px rgba(0,0,0,.5)}
+
+/* FILTERS & EFFECTS */
+.filter{filter:var(--filter)}
+.blur-3xl{filter:blur(64px)}
+.opacity-20{opacity:.2}.opacity-50{opacity:.5}
+.backdrop-blur-md{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+
+/* FOCUS */
+.focus\:outline-none:focus{outline:none}
+.focus\:ring-2:focus{box-shadow:0 0 0 2px #7dd3fc}
+.placeholder-gray-600::placeholder{color:#4b5563}
+
+/* HOVER */
+.hover\:bg-white\/5:hover{background-color:rgba(255,255,255,.05)}
+.hover\:bg-white\/10:hover{background-color:rgba(255,255,255,.1)}
+.hover\:bg-white\/12:hover{background-color:rgba(255,255,255,.12)}
+.hover\:bg-white\/15:hover{background-color:rgba(255,255,255,.15)}
+.hover\:bg-white\/3:hover{background-color:rgba(255,255,255,.03)}
+.hover\:bg-gray-100:hover{background-color:#f3f4f6}
+.hover\:bg-gray-200:hover{background-color:#e5e7eb}
+.hover\:bg-sky-400\/10:hover{background-color:rgba(56,189,248,.1)}
+.hover\:bg-emerald-400\/10:hover{background-color:rgba(52,211,153,.1)}
+.hover\:bg-green-500:hover{background-color:#22c55e}
+.hover\:border-white\/20:hover{border-color:rgba(255,255,255,.2)}
+.hover\:border-gray-300:hover{border-color:#d1d5db}
+.hover\:text-sky-300:hover{color:#7dd3fc}
+.hover\:text-sky-400:hover{color:#38bdf8}
+.hover\:text-yellow-300:hover{color:#fde047}
+.hover\:text-gray-300:hover{color:#d1d5db}
+.hover\:text-gray-400:hover{color:#9ca3af}
+.hover\:text-gray-600:hover{color:#4b5563}
+.hover\:text-red-400:hover{color:#f87171}
+.hover\:opacity-90:hover{opacity:.9}
+
+/* ACTIVE / DISABLED */
+.active\:scale-95:active{transform:scale(.95)}
+.disabled\:opacity-50:disabled{opacity:.5}
+.last\:border-0:last-child{border-width:0}
+
+/* TRANSITION */
+.transition-all{transition:all .15s ease}
+.transition-colors{transition:color .15s ease,background-color .15s ease,border-color .15s ease}
+
+/* CURSOR */
+.cursor-pointer{cursor:pointer}
+.select-none{user-select:none}
+
+/* RESPONSIVE SM */
+@media(min-width:640px){
+  .sm\:flex{display:flex}
+  .sm\:flex-row{flex-direction:row}
+  .sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sm\:items-center{align-items:center}
+  .sm\:justify-center{justify-content:center}
+  .sm\:max-w-lg{max-width:512px}
+  .sm\:max-w-md{max-width:448px}
+  .sm\:px-6{padding-left:24px;padding-right:24px}
+  .sm\:p-4{padding:16px}
+  .sm\:rounded-3xl{border-radius:24px}
+  .sm\:rounded-t-3xl{border-top-left-radius:24px;border-top-right-radius:24px}
+  .sm\:h-0{height:0}
+  .sm\:w-52{width:208px}
+}
+@media(min-width:1024px){
+  .lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+
+/* COMPONENT STYLES */
+.fg *{font-family:'Inter',sans-serif;box-sizing:border-box}
+.fg-brand{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:800;letter-spacing:-0.04em}
+.fg-title{font-size:clamp(1.4rem,5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05}
+.fg-sec{font-size:clamp(0.78rem,2vw,0.96rem);font-weight:700;letter-spacing:-0.02em}
+.fg-lbl{font-size:clamp(0.56rem,1.5vw,0.63rem);font-weight:600;letter-spacing:0.14em;text-transform:uppercase}
+.fg-bod{font-size:clamp(0.7rem,1.8vw,0.82rem);font-weight:300;line-height:1.6}
+.fg-inp{font-size:16px!important;font-family:'Inter',sans-serif!important}
+.jcard{transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer}
+.jcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.5);border-color:rgba(255,255,255,.1)}
+@media(hover:none){.jcard:hover{transform:none}}.jcard:active{transform:scale(.97)}
+.pcard{transition:transform .2s,box-shadow .2s}.pcard:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.chip{transition:all .15s;cursor:pointer}
+.mscroll{overflow-y:auto;-webkit-overflow-scrolling:touch;max-height:100dvh}
+.tab{transition:all .15s;cursor:pointer}
+.pm{animation:pm 3s ease-in-out infinite}
+@keyframes pm{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0)}50%{box-shadow:0 0 20px 2px rgba(250,204,21,.15)}}
+@keyframes blob{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.22;transform:scale(1.07)}}
+.b1{animation:blob 7s ease-in-out infinite}.b2{animation:blob 9s ease-in-out infinite 2s}.b3{animation:blob 8s ease-in-out infinite 4s}
+@keyframes lbadge{0%,100%{opacity:1}50%{opacity:.7}}.lbadge{animation:lbadge 2s ease-in-out infinite}
+@keyframes tin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.toast{animation:tin .3s ease}
+.badge-shine{position:relative;overflow:hidden}
+.badge-shine::after{content:'';position:absolute;top:-50%;left:-75%;width:50%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-20deg);animation:shine 3s infinite}
+@keyframes shine{0%{left:-75%}60%,100%{left:125%}}
+.notif-dot{animation:nd 2s ease-in-out infinite}
+@keyframes nd{0%,100%{opacity:1}50%{opacity:.4}}
+.group:hover .group-hover\:gap-1\.5{gap:6px}
+</style>
 </head>
-<body class="bg-black">
-  <!-- Animated background -->
-  <div class="fixed inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute top-20 left-20 w-96 h-96 bg-sky-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
-    <div class="absolute top-40 right-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow-delayed-1"></div>
-    <div class="absolute bottom-20 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow-delayed-2"></div>
-  </div>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script>
 
-  <!-- Header -->
-  <header class="relative bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 p-1">
-    <div class="bg-black">
-      <div class="max-w-7xl mx-auto px-6 py-8">
-        <div class="flex items-center gap-3">
-          <div class="relative">
-            <svg class="text-sky-400" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-            </svg>
-            <svg class="absolute -top-1 -right-1 text-yellow-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
-            </svg>
-          </div>
-          <div>
-            <h1 class="text-4xl font-black bg-gradient-to-r from-sky-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              FirstGig
-            </h1>
-            <p class="text-gray-400 text-sm font-medium">Your career starts now ⚡</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+const ICON_PATHS = {"Briefcase":"<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\"/>","Edit":"<path d=\"M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7\"/><path d=\"M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z\"/>","Mail":"<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/>","Palette":"<circle cx=\"13.5\" cy=\"6.5\" r=\".5\"/><circle cx=\"17.5\" cy=\"10.5\" r=\".5\"/><circle cx=\"8.5\" cy=\"7.5\" r=\".5\"/><circle cx=\"6.5\" cy=\"12.5\" r=\".5\"/><path d=\"M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z\"/>","Share2":"<circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" x2=\"15.42\" y1=\"13.51\" y2=\"17.49\"/><line x1=\"15.41\" x2=\"8.59\" y1=\"6.51\" y2=\"10.49\"/>","Camera":"<path d=\"M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z\"/><circle cx=\"12\" cy=\"13\" r=\"3\"/>","ArrowRight":"<path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/>","X":"<path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/>","Sparkles":"<path d=\"m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z\"/><path d=\"M5 3v4\"/><path d=\"M19 17v4\"/><path d=\"M3 5h4\"/><path d=\"M17 19h4\"/>","Star":"<polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/>","Dog":"<path d=\"M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 2 1.261.188 2.638-.043 3.594-.672\"/><path d=\"M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 2-1.261.188-2.638-.043-3.594-.672\"/><path d=\"M8 14v.5\"/><path d=\"M16 14v.5\"/><path d=\"M11.25 16.25h1.5L12 17l-.75-.75z\"/><path d=\"M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444c0-1.061-.162-2.2-.493-3.309m-9.243-6.082A8.801 8.801 0 0 1 12 5c.78 0 1.5.108 2.161.306\"/>","ShoppingBag":"<path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z\"/><line x1=\"3\" x2=\"21\" y1=\"6\" y2=\"6\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/>","BookOpen":"<path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"/><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"/>","Truck":"<path d=\"M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11v10\"/><rect width=\"5\" height=\"5\" x=\"12\" y=\"12\" rx=\"1\"/><circle cx=\"3\" cy=\"19\" r=\"2\"/><circle cx=\"17\" cy=\"19\" r=\"2\"/>","Coffee":"<path d=\"M17 8h1a4 4 0 1 1 0 8h-1\"/><path d=\"M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z\"/><line x1=\"6\" x2=\"6\" y1=\"2\" y2=\"4\"/><line x1=\"10\" x2=\"10\" y1=\"2\" y2=\"4\"/><line x1=\"14\" x2=\"14\" y1=\"2\" y2=\"4\"/>","Megaphone":"<path d=\"m3 11 19-9-9 19-2-8-8-2z\"/>","Home":"<path d=\"m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><polyline points=\"9 22 9 12 15 12 15 22\"/>","Music":"<path d=\"M9 18V5l12-2v13\"/><circle cx=\"6\" cy=\"18\" r=\"3\"/><circle cx=\"18\" cy=\"16\" r=\"3\"/>","Filter":"<polygon points=\"22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3\"/>","Search":"<circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/>","Crown":"<path d=\"m2 4 3 12h14l3-12-6 5-4-7-4 7-6-5zm3 16h14\"/>","CheckCircle":"<path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"/><polyline points=\"22 4 12 14.01 9 11.01\"/>","Clock":"<circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/>","ChevronRight":"<path d=\"m9 18 6-6-6-6\"/>","Building2":"<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\"/><path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/><path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\"/><path d=\"M10 6h4\"/><path d=\"M10 10h4\"/><path d=\"M10 14h4\"/><path d=\"M10 18h4\"/>","Tag":"<path d=\"M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z\"/><path d=\"M7 7h.01\"/>","Bookmark":"<path d=\"m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z\"/>","BookmarkCheck":"<path d=\"m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z\"/><path d=\"m9 10 2 2 4-4\"/>","User":"<path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\"/><circle cx=\"12\" cy=\"7\" r=\"4\"/>","Bell":"<path d=\"M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9\"/><path d=\"M10.3 21a1.94 1.94 0 0 0 3.4 0\"/>","BellOff":"<path d=\"M8.7 3A6 6 0 0 1 18 8a21.3 21.3 0 0 0 .6 5\"/><path d=\"M17 17H3s3-2 3-9a4.67 4.67 0 0 1 .3-1.7\"/><path d=\"M10.3 21a1.94 1.94 0 0 0 3.4 0\"/><line x1=\"2\" x2=\"22\" y1=\"2\" y2=\"22\"/>","Copy":"<rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/>","Gift":"<polyline points=\"20 12 20 22 4 22 4 12\"/><rect width=\"20\" height=\"5\" x=\"2\" y=\"7\" rx=\"1\"/><line x1=\"12\" x2=\"12\" y1=\"22\" y2=\"7\"/><path d=\"M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z\"/><path d=\"M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z\"/>","Award":"<circle cx=\"12\" cy=\"8\" r=\"6\"/><path d=\"M15.477 12.89 17 22l-5-3-5 3 1.523-9.11\"/>","LayoutDashboard":"<rect width=\"7\" height=\"9\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"9\" x=\"14\" y=\"12\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"3\" y=\"16\" rx=\"1\"/>","Check":"<polyline points=\"20 6 9 17 4 12\"/>"};
+function LucideIcon({ name, size = 16, className = '', style = {} }) {
+  const paths = ICON_PATHS[name] || '';
+  const svgStyle = { display: 'inline-block', verticalAlign: 'middle', flexShrink: 0, ...style };
+  return React.createElement('svg', {
+    width: size, height: size, viewBox: '0 0 24 24',
+    fill: 'none', stroke: 'currentColor', strokeWidth: '2',
+    strokeLinecap: 'round', strokeLinejoin: 'round',
+    className, style: svgStyle,
+    dangerouslySetInnerHTML: { __html: paths }
+  });
+}
+// Create named exports to match lucide-react API
+const Briefcase = (props) => React.createElement(LucideIcon, { ...props, name: 'Briefcase' });
+const Edit = (props) => React.createElement(LucideIcon, { ...props, name: 'Edit' });
+const Mail = (props) => React.createElement(LucideIcon, { ...props, name: 'Mail' });
+const Palette = (props) => React.createElement(LucideIcon, { ...props, name: 'Palette' });
+const Share2 = (props) => React.createElement(LucideIcon, { ...props, name: 'Share2' });
+const Camera = (props) => React.createElement(LucideIcon, { ...props, name: 'Camera' });
+const ArrowRight = (props) => React.createElement(LucideIcon, { ...props, name: 'ArrowRight' });
+const X = (props) => React.createElement(LucideIcon, { ...props, name: 'X' });
+const Sparkles = (props) => React.createElement(LucideIcon, { ...props, name: 'Sparkles' });
+const Star = (props) => React.createElement(LucideIcon, { ...props, name: 'Star' });
+const Dog = (props) => React.createElement(LucideIcon, { ...props, name: 'Dog' });
+const ShoppingBag = (props) => React.createElement(LucideIcon, { ...props, name: 'ShoppingBag' });
+const BookOpen = (props) => React.createElement(LucideIcon, { ...props, name: 'BookOpen' });
+const Truck = (props) => React.createElement(LucideIcon, { ...props, name: 'Truck' });
+const Coffee = (props) => React.createElement(LucideIcon, { ...props, name: 'Coffee' });
+const Megaphone = (props) => React.createElement(LucideIcon, { ...props, name: 'Megaphone' });
+const Home = (props) => React.createElement(LucideIcon, { ...props, name: 'Home' });
+const Music = (props) => React.createElement(LucideIcon, { ...props, name: 'Music' });
+const Filter = (props) => React.createElement(LucideIcon, { ...props, name: 'Filter' });
+const Search = (props) => React.createElement(LucideIcon, { ...props, name: 'Search' });
+const Crown = (props) => React.createElement(LucideIcon, { ...props, name: 'Crown' });
+const CheckCircle = (props) => React.createElement(LucideIcon, { ...props, name: 'CheckCircle' });
+const Clock = (props) => React.createElement(LucideIcon, { ...props, name: 'Clock' });
+const ChevronRight = (props) => React.createElement(LucideIcon, { ...props, name: 'ChevronRight' });
+const Building2 = (props) => React.createElement(LucideIcon, { ...props, name: 'Building2' });
+const Tag = (props) => React.createElement(LucideIcon, { ...props, name: 'Tag' });
+const Bookmark = (props) => React.createElement(LucideIcon, { ...props, name: 'Bookmark' });
+const BookmarkCheck = (props) => React.createElement(LucideIcon, { ...props, name: 'BookmarkCheck' });
+const User = (props) => React.createElement(LucideIcon, { ...props, name: 'User' });
+const Bell = (props) => React.createElement(LucideIcon, { ...props, name: 'Bell' });
+const BellOff = (props) => React.createElement(LucideIcon, { ...props, name: 'BellOff' });
+const Copy = (props) => React.createElement(LucideIcon, { ...props, name: 'Copy' });
+const Gift = (props) => React.createElement(LucideIcon, { ...props, name: 'Gift' });
+const Award = (props) => React.createElement(LucideIcon, { ...props, name: 'Award' });
+const LayoutDashboard = (props) => React.createElement(LucideIcon, { ...props, name: 'LayoutDashboard' });
+const Check = (props) => React.createElement(LucideIcon, { ...props, name: 'Check' });
 
-  <!-- Hero -->
-  <section class="relative max-w-7xl mx-auto px-6 py-20">
-    <div class="text-center max-w-4xl mx-auto">
-      <div class="flex items-center justify-center gap-2 mb-6">
-        <svg class="text-yellow-400 fill-yellow-400 animate-pulse" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-        </svg>
-        <span class="text-sky-400 font-bold text-sm uppercase tracking-wider">Real Jobs • Real Pay</span>
-        <svg class="text-yellow-400 fill-yellow-400 animate-pulse" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-        </svg>
-      </div>
-      <h2 class="text-6xl md:text-7xl font-black text-white mb-6 leading-tight">
-        Your First Job
-        <br>
-        <span class="bg-gradient-to-r from-sky-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-          Starts Here
-        </span>
-      </h2>
-      <p class="text-xl text-gray-300 mb-8 font-medium">
-        Safe, vetted opportunities with Holding Alpha brands.
-        <br>
-        <span class="text-sky-400">Earn up to $100</span> doing work that actually matters.
-      </p>
-      <div class="flex items-center justify-center gap-4 text-sm">
-        <div class="flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 rounded-full px-4 py-2">
-          <svg class="text-sky-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-          </svg>
-          <span class="text-sky-400 font-semibold">Quick Apply</span>
-        </div>
-        <div class="flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-2">
-          <svg class="text-purple-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
-          </svg>
-          <span class="text-purple-400 font-semibold">Gen Alpha Built</span>
-        </div>
-      </div>
-    </div>
-  </section>
+const { useState, useMemo, useEffect, useRef } = React;
+const S = `
 
-  <!-- Jobs Grid -->
-  <section class="relative max-w-7xl mx-auto px-6 pb-20">
-    <h3 class="text-3xl font-black text-white mb-10 text-center">
-      <span class="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">Open Positions</span>
-    </h3>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="jobs-grid">
-      <!-- Jobs will be inserted here by JavaScript -->
-    </div>
-  </section>
-
-  <!-- Application Modal -->
-  <div id="modal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 overflow-y-auto hidden">
-    <button onclick="closeModal()" class="fixed top-4 right-4 z-50 bg-black/80 border border-gray-600 rounded-full p-3 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-400 transition-all shadow-lg">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 6 6 18"></path>
-        <path d="m6 6 12 12"></path>
-      </svg>
-    </button>
-    
-    <div class="min-h-full flex items-start justify-center p-6 py-12">
-      <div class="bg-gradient-to-br from-gray-900 to-black rounded-3xl max-w-2xl w-full border border-gray-800 shadow-2xl">
-        <div id="modal-header" class="p-1 rounded-t-3xl">
-          <div class="bg-black p-6 rounded-t-2xl">
-            <h3 id="modal-title" class="text-3xl font-black text-white"></h3>
-            <p id="modal-age" class="text-gray-400 text-sm font-semibold uppercase tracking-wide mt-1"></p>
-          </div>
-        </div>
-
-        <div class="p-8">
-          <div class="mb-8">
-            <h4 class="font-bold text-white mb-3 text-lg">About the Role</h4>
-            <p id="modal-description" class="text-gray-300 mb-6 leading-relaxed"></p>
-            <h4 class="font-bold text-white mb-3 text-lg">Requirements</h4>
-            <ul id="modal-requirements" class="space-y-3">
-              <!-- Requirements will be inserted here -->
-            </ul>
-          </div>
-
-          <form id="application-form" class="space-y-5">
-            <div class="grid md:grid-cols-2 gap-5">
-              <div>
-                <label class="block text-sm font-bold text-gray-300 mb-2">Full Name *</label>
-                <input type="text" name="name" required class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
-              </div>
-              <div>
-                <label class="block text-sm font-bold text-gray-300 mb-2">Age *</label>
-                <input type="number" name="age" required class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-sm font-bold text-gray-300 mb-2">Email *</label>
-              <input type="email" name="email" required class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
-            </div>
-
-            <div>
-              <label class="block text-sm font-bold text-gray-300 mb-2">Experience / Background</label>
-              <textarea name="experience" rows="3" class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all resize-none" placeholder="Tell us about any relevant experience..."></textarea>
-            </div>
-
-            <div>
-              <label class="block text-sm font-bold text-gray-300 mb-2">Portfolio / Work Samples</label>
-              <input type="url" name="portfolio" placeholder="https://" class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
-            </div>
-
-            <div>
-              <label class="block text-sm font-bold text-gray-300 mb-2">Why do you want this role? *</label>
-              <textarea name="why" rows="4" required class="w-full px-4 py-3 bg-black border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all resize-none" placeholder="What interests you about this position?"></textarea>
-            </div>
-
-            <button type="submit" id="submit-btn" class="w-full text-white font-black py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg">
-              Submit Application ✨
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="relative bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 p-1 mt-20">
-    <div class="bg-black">
-      <div class="max-w-7xl mx-auto px-6 py-10 text-center">
-        <p class="text-gray-400 font-semibold">FirstGig is a product of <span class="text-white">Holding Alpha</span></p>
-        <p class="mt-2 text-gray-500 text-sm">Safe opportunities. Real growth. Built for Gen Alpha.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const jobs = [
-      {
-        id: 1,
-        title: 'Editorial',
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path></svg>`,
-        description: 'Write daily/weekly edits for Alpha Vogue and brand content',
-        ageRange: 'Gen Alpha friendly',
-        gradient: 'from-sky-400 to-blue-500',
-        requirements: ['Strong writing skills', 'Understanding of trends', 'Consistent availability']
-      },
-      {
-        id: 2,
-        title: 'Partnerships',
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"></path><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"></path><path d="m21 3 1 11h-2"></path><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"></path><path d="M3 4h8"></path></svg>`,
-        description: 'Organize and join calls with high-profile partners',
-        ageRange: 'Adult (23+)',
-        gradient: 'from-purple-400 to-pink-500',
-        requirements: ['Professional communication', 'Organization skills', 'Available for calls']
-      },
-      {
-        id: 3,
-        title: 'Assistant',
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>`,
-        description: 'Email management, call coordination, event tracking, daily support',
-        ageRange: 'Gen Alpha friendly',
-        gradient: 'from-cyan-400 to-teal-500',
-        requirements: ['Detail-oriented', 'Reliable', 'Good communication']
-      },
-      {
-        id: 4,
-        title: 'Graphic Designer',
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"></path></svg>`,
-        description: 'Create presentations, websites, logos, product designs, and apparel graphics',
-        ageRange: 'Gen Alpha friendly',
-        gradient: 'from-orange-400 to-red-500',
-        requirements: ['Design software skills', 'Portfolio required', 'Creative mindset']
-      },
-      {
-        id: 5,
-        title: 'Social Media Manager',
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>`,
-        description: 'Maintain consistent content and posts across all brands',
-        ageRange: 'Gen Alpha friendly',
-        gradient: 'from-pink-400 to-rose-500',
-        requirements: ['Social media expertise', 'Content creation skills', 'Consistency']
-      },
-      {
-        id: 6,
-        title: 'Marketer',
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>`,
-        description: 'Promote deals, partnerships, products, and latest trends',
-        ageRange: 'Gen Alpha friendly',
-        gradient: 'from-green-400 to-emerald-500',
-        requirements: ['Marketing knowledge', 'Trend awareness', 'Strategic thinking']
-      },
-      {
-        id: 7,
-        title: 'Photographer',
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>`,
-        description: 'Product shoots, campaign content, and brand visuals',
-        ageRange: 'Gen Alpha friendly',
-        gradient: 'from-yellow-400 to-amber-500',
-        requirements: ['Photography equipment', 'Portfolio required', 'Time commitment']
-      }
-    ];
-
-    let selectedJob = null;
-
-    // Render job cards
-    function renderJobs() {
-      const grid = document.getElementById('jobs-grid');
-      grid.innerHTML = jobs.map(job => `
-        <div
-          class="group relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-6 border border-gray-800 hover:border-gray-600 hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden"
-          onclick="openModal(${job.id})"
-        >
-          <div class="absolute inset-0 bg-gradient-to-br ${job.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-          <div class="relative">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="bg-gradient-to-br ${job.gradient} p-3 rounded-xl shadow-lg text-white">
-                ${job.icon}
-              </div>
-              <div class="flex-1">
-                <h4 class="font-black text-xl text-white mb-1">${job.title}</h4>
-                <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide">${job.ageRange}</p>
-              </div>
-            </div>
-            <p class="text-gray-300 text-sm mb-4 leading-relaxed">${job.description}</p>
-            <button class="flex items-center gap-2 text-sky-400 font-bold text-sm group-hover:gap-3 transition-all">
-              Apply Now 
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      `).join('');
+.fg * { font-family:'Inter',sans-serif; box-sizing:border-box; }
+.fg-brand{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:800;letter-spacing:-0.04em}
+.fg-title{font-size:clamp(1.4rem,5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05}
+.fg-sec{font-size:clamp(0.78rem,2vw,0.96rem);font-weight:700;letter-spacing:-0.02em}
+.fg-lbl{font-size:clamp(0.56rem,1.5vw,0.63rem);font-weight:600;letter-spacing:0.14em;text-transform:uppercase}
+.fg-bod{font-size:clamp(0.7rem,1.8vw,0.82rem);font-weight:300;line-height:1.6}
+.fg-inp{font-size:16px!important;font-family:'Inter',sans-serif!important}
+.jcard{transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer}
+.jcard:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.5);border-color:rgba(255,255,255,.1)}
+@media(hover:none){.jcard:hover{transform:none}}.jcard:active{transform:scale(.97)}
+.pcard{transition:transform .2s,box-shadow .2s}.pcard:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.chip{transition:all .15s;cursor:pointer}
+.mscroll{overflow-y:auto;-webkit-overflow-scrolling:touch;max-height:100dvh}
+.tab{transition:all .15s;cursor:pointer}
+.pm{animation:pm 3s ease-in-out infinite}
+@keyframes pm{0%,100%{box-shadow:0 0 0 0 rgba(250,204,21,0)}50%{box-shadow:0 0 20px 2px rgba(250,204,21,.15)}}
+@keyframes blob{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.22;transform:scale(1.07)}}
+.b1{animation:blob 7s ease-in-out infinite}.b2{animation:blob 9s ease-in-out infinite 2s}.b3{animation:blob 8s ease-in-out infinite 4s}
+@keyframes lbadge{0%,100%{opacity:1}50%{opacity:.7}}.lbadge{animation:lbadge 2s ease-in-out infinite}
+.toast{animation:tin .3s ease}.toast-out{animation:tout .3s ease forwards}
+@keyframes tin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tout{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(12px)}}
+.badge-shine{position:relative;overflow:hidden}
+.badge-shine::after{content:'';position:absolute;top:-50%;left:-75%;width:50%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-20deg);animation:shine 3s infinite}
+@keyframes shine{0%{left:-75%}60%,100%{left:125%}}
+.notif-dot{animation:nd 2s ease-in-out infinite}
+@keyframes nd{0%,100%{opacity:1}50%{opacity:.4}}
+`;
+const JOBS = [
+  { id: 1, title: "Dog Walker", icon: Dog, cat: "Local", brand: "Self-employed", pay: "\xA38\u201312/hr", color: "#fb923c", gradient: "from-orange-400 to-amber-500", premium: false, req: ["Love of animals", "Reliability", "Local area knowledge"], description: "Walk dogs for local owners before/after school or on weekends. Build your own regular client base and earn independently.", badges: ["Animal Care"] },
+  { id: 2, title: "Social Media Help", icon: Share2, cat: "Digital", brand: "Local Businesses", pay: "\xA350\u2013100/mo", color: "#f472b6", gradient: "from-pink-400 to-rose-500", premium: true, req: ["Active on social media", "Basic design sense", "Consistency"], description: "Help a local shop, caf\xE9, or tradesperson manage their Instagram or TikTok. Post content, reply to comments, grow their following.", badges: ["Social Media", "Canva Pro"] },
+  { id: 3, title: "Babysitter", icon: Home, cat: "Local", brand: "Local Families", pay: "\xA37\u201310/hr", color: "#4ade80", gradient: "from-green-400 to-emerald-500", premium: false, req: ["DBS check (recommended)", "Patience", "Trustworthy"], description: "Babysit for local families evenings and weekends. Great for building trust, references, and a regular income.", badges: ["Childcare"] },
+  { id: 4, title: "Flyer Distributor", icon: Megaphone, cat: "Local", brand: "Local Businesses", pay: "\xA36\u20138/hr", color: "#22d3ee", gradient: "from-cyan-400 to-teal-500", premium: false, req: ["Good stamina", "Reliability", "Local knowledge"], description: "Deliver flyers and leaflets for local businesses, events, or takeaways. Flexible hours and immediate cash pay.", badges: ["Marketing"] },
+  { id: 5, title: "Tutor", icon: BookOpen, cat: "Education", brand: "Self-employed", pay: "\xA310\u201320/hr", color: "#818cf8", gradient: "from-indigo-400 to-purple-500", premium: true, req: ["Strong subject knowledge", "Patience", "Reliability"], description: "Tutor younger students in subjects you excel at \u2014 maths, English, science. Build a small client list and earn well.", badges: ["Copywriter", "Teaching"] },
+  { id: 6, title: "Market Stall Asst", icon: ShoppingBag, cat: "Local", brand: "Local Traders", pay: "\xA37\u20139/hr", color: "#facc15", gradient: "from-yellow-400 to-amber-500", premium: false, req: ["Good people skills", "Physical fitness", "Weekend availability"], description: "Help run a market stall \u2014 set up, serve customers, handle cash. Great real-world retail experience.", badges: ["Retail", "Cash Handling"] },
+  { id: 7, title: "Car Washer", icon: Truck, cat: "Local", brand: "Self-employed", pay: "\xA35\u201315/job", color: "#38bdf8", gradient: "from-sky-400 to-blue-500", premium: false, req: ["Attention to detail", "Physical energy", "Basic supplies"], description: "Offer a mobile car wash service to neighbours and local streets. Low startup cost, quick cash, and scalable.", badges: [] },
+  { id: 8, title: "Caf\xE9 Assistant", icon: Coffee, cat: "Hospitality", brand: "Local Caf\xE9s", pay: "\xA37\u201310/hr", color: "#f97316", gradient: "from-orange-400 to-red-500", premium: false, req: ["Friendly attitude", "Punctuality", "Food hygiene awareness"], description: "Help out at a local caf\xE9 \u2014 serving, cleaning, restocking. One of the most common first jobs with tips on top.", badges: ["Hospitality"] },
+  { id: 9, title: "Content Creator", icon: Camera, cat: "Digital", brand: "Self / Brands", pay: "\xA320\u2013100/proj", color: "#c084fc", gradient: "from-purple-400 to-pink-500", premium: true, req: ["Camera or phone", "Editing skills", "Creative eye"], description: "Shoot and edit short-form video or photo content for small brands, creators, or events. Build your portfolio fast.", badges: ["Content Creator", "Video Editing"] },
+  { id: 10, title: "Data Entry", icon: Edit, cat: "Digital", brand: "Remote / Local Biz", pay: "\xA36\u20139/hr", color: "#34d399", gradient: "from-emerald-400 to-green-500", premium: false, req: ["Attention to detail", "Basic computer skills", "Accuracy"], description: "Input, organise, and manage data for local businesses or remote clients. Fully flexible and beginner-friendly.", badges: ["Admin"] },
+  { id: 11, title: "Event Helper", icon: Music, cat: "Hospitality", brand: "Event Organisers", pay: "\xA38\u201311/hr", color: "#e879f9", gradient: "from-fuchsia-400 to-pink-500", premium: false, req: ["Energy and enthusiasm", "Reliability", "Weekend availability"], description: "Help at local events, fairs, or gigs \u2014 setup, front of house, or bar assistance. Fun, social, and well paid.", badges: ["Events", "Hospitality"] },
+  { id: 12, title: "Editorial Writer", icon: Palette, cat: "Digital", brand: "Alpha Vogue / Blogs", pay: "\xA320\u201350/post", color: "#60a5fa", gradient: "from-blue-400 to-sky-500", premium: false, req: ["Strong writing", "Trend awareness", "Consistent availability"], description: "Write articles, blogs, or social copy for online publications and brands. Build a writing portfolio from day one.", badges: ["Copywriter"] }
+];
+const ALL_BADGES = ["Social Media", "Canva Pro", "Copywriter", "Content Creator", "Video Editing", "Marketing", "Hospitality", "Retail", "Teaching", "Admin", "Animal Care", "Childcare", "Cash Handling", "Events"];
+const CATS = ["All", "Digital", "Local", "Hospitality", "Education"];
+const PLANS = [
+  { id: "standard", label: "Standard", price: "\xA310", period: "one-off", color: "#38bdf8", gradient: "from-sky-400 to-blue-500", tag: "Launch Price", stripeUrl: "https://buy.stripe.com/cNifZi1jK5KS2WzeP84gg0o", features: ["1 job listing", "Visible to all candidates", "Approval within 24hrs", "Listed for 30 days", "Email support"], cta: "Post a Job \u2014 \xA310" },
+  { id: "premium", label: "Premium", price: "\xA350", period: "per month", color: "#facc15", gradient: "from-yellow-400 to-amber-500", tag: "\u{1F525} Best Value", highlight: true, stripeUrl: "https://buy.stripe.com/cNi14o4vWgpw54HbCW4gg0p", features: ["1 job listing", "Pinned at top of gallery", "Crown badge on listing", "Priority approval", "30-day listing", "Dedicated support"], cta: "Go Premium \u2014 \xA350/mo" }
+];
+const STATUS_COLORS = { Applied: "#38bdf8", "In Review": "#facc15", Hired: "#4ade80", Declined: "#f87171" };
+const ic = "fg-inp w-full px-3 py-2.5 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-sky-300 bg-gray-50 disabled:opacity-50 transition-all";
+function Toast({ msg, onDone }) {
+  useEffect(() => {
+    const t = setTimeout(onDone, 2800);
+    return () => clearTimeout(t);
+  }, []);
+  return /* @__PURE__ */ React.createElement("div", { className: "toast fixed bottom-6 left-1/2 z-[200]", style: { transform: "translateX(-50%)" } }, /* @__PURE__ */ React.createElement("div", { className: "fg-lbl text-white bg-gray-900 border border-white/10 rounded-full px-4 py-2.5 shadow-xl whitespace-nowrap" }, msg));
+}
+window.__App = function FirstGig() {
+  const [view, setView] = useState("jobs");
+  const [selId, setSelId] = useState(null);
+  const [cat, setCat] = useState("All");
+  const [q, setQ] = useState("");
+  const [savedIds, setSavedIds] = useState([2, 5]);
+  const [notifOn, setNotifOn] = useState(false);
+  const [toast, setToast] = useState(null);
+  const [postStep, setPostStep] = useState(0);
+  const [selPlan, setSelPlan] = useState(null);
+  const [postSub, setPostSub] = useState(false);
+  const [postErr, setPostErr] = useState("");
+  const [appliedIds, setAppliedIds] = useState({ 3: { status: "Hired", date: "12 Feb" }, 7: { status: "In Review", date: "18 Feb" }, 10: { status: "Applied", date: "2 Mar" } });
+  const [refCode] = useState("FG-" + Math.random().toString(36).slice(2, 7).toUpperCase());
+  const [refCopied, setRefCopied] = useState(false);
+  const [earnedBadges, setEarnedBadges] = useState(["Social Media", "Copywriter", "Hospitality"]);
+  const [profileSetup, setProfileSetup] = useState(false);
+  const [showProfileSetup, setShowProfileSetup] = useState(false);
+  const [profile, setProfile] = useState({ name: "", age: "", email: "", bio: "", skills: [] });
+  const [applyForm, setApplyForm] = useState({ name: "", age: "", email: "", why: "" });
+  const [applying, setApplying] = useState(false);
+  const [applyErr, setApplyErr] = useState("");
+  const [postForm, setPostForm] = useState({ company: "", contactName: "", contactEmail: "", jobTitle: "", category: "Local", pay: "", description: "", requirements: "" });
+  const [profileSkills, setProfileSkills] = useState([]);
+  const [notifList, setNotifList] = useState([
+    { id: 1, text: "Your application for Car Washer moved to In Review", time: "2h ago", read: false },
+    { id: 2, text: "New Digital role added: UX Researcher", time: "5h ago", read: false },
+    { id: 3, text: "Congrats! You earned the Hospitality badge", time: "1d ago", read: true }
+  ]);
+  const [showNotifs, setShowNotifs] = useState(false);
+  const [showPaymentHistory, setShowPaymentHistory] = useState(false);
+  const [showAddPayment, setShowAddPayment] = useState(false);
+  const [gigPayments, setGigPayments] = useState([]);
+  const [gigPayForm, setGigPayForm] = useState({ jobTitle: '', employer: '', amount: '', date: '', notes: '' });
+  const [gigPayErr, setGigPayErr] = useState('');
+  const [gigPaySubmitting, setGigPaySubmitting] = useState(false);
+  const totalEarnings = gigPayments.reduce((s, p) => s + parseFloat(p.amount || 0), 0);
+  const sel = useMemo(() => JOBS.find((j) => j.id === selId), [selId]);
+  const sorted = useMemo(() => [...JOBS.filter((j) => j.premium), ...JOBS.filter((j) => !j.premium)], []);
+  const filtered = useMemo(() => sorted.filter((j) => {
+    const mc = cat === "All" || j.cat === cat;
+    const mq = !q || j.title.toLowerCase().includes(q.toLowerCase()) || j.brand.toLowerCase().includes(q.toLowerCase());
+    return mc && mq;
+  }), [cat, q, sorted]);
+  const unread = notifList.filter((n) => !n.read).length;
+  const showToast = (msg) => setToast(msg);
+  const toggleSave = (id) => {
+    setSavedIds((p) => p.includes(id) ? p.filter((x) => x !== id) : [...p, id]);
+    showToast(savedIds.includes(id) ? "Removed from saved" : "Saved to wishlist \u2713");
+  };
+  const copyRef = () => {
+    setRefCopied(true);
+    showToast("Referral link copied! \u{1F389}");
+    setTimeout(() => setRefCopied(false), 2e3);
+  };
+  const markNotifRead = (id) => setNotifList((p) => p.map((n) => n.id === id ? { ...n, read: true } : n));
+  const applyNow = () => {
+    if (!applyForm.name.trim() || !applyForm.age || !applyForm.email.trim() || !applyForm.why.trim()) {
+      setApplyErr("Please fill in all fields.");
+      return;
     }
-
-    // Open modal
-    function openModal(jobId) {
-      selectedJob = jobs.find(j => j.id === jobId);
-      if (!selectedJob) return;
-
-      document.getElementById('modal').classList.remove('hidden');
-      document.getElementById('modal-header').className = `bg-gradient-to-r ${selectedJob.gradient} p-1 rounded-t-3xl`;
-      document.getElementById('modal-title').textContent = selectedJob.title;
-      document.getElementById('modal-age').textContent = selectedJob.ageRange;
-      document.getElementById('modal-description').textContent = selectedJob.description;
-      document.getElementById('submit-btn').className = `w-full bg-gradient-to-r ${selectedJob.gradient} text-white font-black py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg`;
-      
-      const reqList = document.getElementById('modal-requirements');
-      reqList.innerHTML = selectedJob.requirements.map(req => `
-        <li class="text-gray-300 flex items-start gap-3">
-          <span class="bg-gradient-to-r ${selectedJob.gradient} bg-clip-text text-transparent font-bold">✦</span>
-          ${req}
-        </li>
-      `).join('');
-
-      document.body.style.overflow = 'hidden';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(applyForm.email)) {
+      setApplyErr("Please enter a valid email.");
+      return;
     }
-
-    // Close modal
-    function closeModal() {
-      document.getElementById('modal').classList.add('hidden');
-      document.body.style.overflow = '';
-      document.getElementById('application-form').reset();
+    setApplying(true);
+    setApplyErr("");
+    setTimeout(() => {
+      setApplying(false);
+      setAppliedIds((p) => ({ ...p, [sel.id]: { status: "Applied", date: (/* @__PURE__ */ new Date()).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) } }));
+      setNotifList((p) => [{ id: Date.now(), text: `Application submitted for ${sel.title}`, time: "Just now", read: false }, ...p]);
+      setSelId(null);
+      setApplyForm({ name: "", age: "", email: "", why: "" });
+      showToast("Application submitted! \u2713");
+    }, 1500);
+  };
+  const saveProfile = () => {
+    if (!profile.name.trim() || !profile.email.trim()) {
+      showToast("Please fill name & email");
+      return;
     }
+    setProfileSetup(true);
+    setShowProfileSetup(false);
+    setApplyForm((p) => ({ ...p, name: profile.name, age: profile.age, email: profile.email }));
+    showToast("Profile saved \u2713");
+  };
+  const submitPost = () => {
+    if (!postForm.company.trim() || !postForm.contactName.trim() || !postForm.contactEmail.trim() || !postForm.jobTitle.trim() || !postForm.pay.trim() || !postForm.description.trim()) {
+      setPostErr("Please fill in all required fields.");
+      return;
+    }
+    setPostSub(true);
+    setPostErr("");
+    setTimeout(() => {
+      setPostSub(false);
+      setPostStep(2);
+    }, 800);
+  };
+  const claimBadge = (b) => {
+    if (!earnedBadges.includes(b)) {
+      setEarnedBadges((p) => [...p, b]);
+      showToast(`Badge earned: ${b} \u{1F3C5}`);
+    }
+  };
+  const NavBtn = ({ v, label, icon: I, notif }) => /* @__PURE__ */ React.createElement("button", { onClick: () => {
+    setView(v);
+    setShowNotifs(false);
+  }, className: `tab flex flex-col items-center gap-0.5 px-2 py-1 relative ${view === v ? "text-white" : "text-gray-600 hover:text-gray-400"}` }, /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(I, { size: 18 }), notif > 0 && /* @__PURE__ */ React.createElement("span", { className: "notif-dot absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full" })), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl", style: { fontSize: "0.5rem" } }, label));
+  return /* @__PURE__ */ React.createElement("div", { className: "fg min-h-screen bg-black pb-20" }, /* @__PURE__ */ React.createElement("style", null, S), /* @__PURE__ */ React.createElement("div", { className: "fixed inset-0 overflow-hidden pointer-events-none z-0" }, /* @__PURE__ */ React.createElement("div", { className: "b1 absolute top-0 left-0 w-64 h-64 bg-sky-500 rounded-full filter blur-3xl opacity-20" }), /* @__PURE__ */ React.createElement("div", { className: "b2 absolute top-20 right-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl opacity-20" }), /* @__PURE__ */ React.createElement("div", { className: "b3 absolute bottom-0 left-1/3 w-64 h-64 bg-pink-500 rounded-full filter blur-3xl opacity-20" })), /* @__PURE__ */ React.createElement("header", { className: "relative z-10" }, /* @__PURE__ */ React.createElement("div", { className: "h-px bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500" }), /* @__PURE__ */ React.createElement("div", { className: "px-4 sm:px-6 py-3 flex items-center justify-between max-w-5xl mx-auto" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ React.createElement("div", { className: "relative" }, /* @__PURE__ */ React.createElement(Briefcase, { className: "text-sky-400", size: 22 }), /* @__PURE__ */ React.createElement(Sparkles, { className: "absolute -top-1 -right-1 text-yellow-400", size: 9 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("span", { className: "fg-brand bg-gradient-to-r from-sky-400 via-purple-400 to-pink-400 bg-clip-text text-transparent block leading-none" }, "FirstGig"), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-gray-600", style: { letterSpacing: "0.22em", fontSize: "0.48rem" } }, "YOUR CAREER STARTS NOW"))), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ React.createElement("button", { onClick: () => setShowNotifs((p) => !p), className: "relative p-2 rounded-full hover:bg-white/5 transition-all" }, notifOn ? /* @__PURE__ */ React.createElement(Bell, { size: 18, className: "text-sky-400" }) : /* @__PURE__ */ React.createElement(BellOff, { size: 18, className: "text-gray-600" }), unread > 0 && /* @__PURE__ */ React.createElement("span", { className: "notif-dot absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" })), /* @__PURE__ */ React.createElement("a", { href: "mailto:hello@holdingalpha.co", className: "hidden sm:flex items-center gap-1 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full px-3 py-1.5 transition-all" }, /* @__PURE__ */ React.createElement(Mail, { size: 10, className: "text-sky-400" }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-gray-300" }, "Contact")))), /* @__PURE__ */ React.createElement("div", { className: "h-px bg-white/5" }), showNotifs && /* @__PURE__ */ React.createElement("div", { className: "absolute right-4 top-full mt-1 w-72 bg-gray-950 border border-white/10 rounded-2xl shadow-2xl z-50 overflow-hidden" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between px-4 py-3 border-b border-white/5" }, /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-gray-400" }, "Notifications"), /* @__PURE__ */ React.createElement("button", { onClick: () => setNotifOn((p) => !p), className: "fg-lbl text-gray-500 hover:text-gray-300" }, notifOn ? "Mute" : "Unmute")), notifList.map((n) => /* @__PURE__ */ React.createElement("div", { key: n.id, onClick: () => markNotifRead(n.id), className: `px-4 py-3 border-b border-white/5 cursor-pointer hover:bg-white/5 transition-all ${!n.read ? "bg-sky-500/5" : ""}` }, /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-300 leading-snug" }, n.text), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-600 mt-0.5" }, n.time, !n.read && /* @__PURE__ */ React.createElement("span", { className: "ml-2 text-sky-400" }, "\u25CF new")))))), view === "jobs" && /* @__PURE__ */ React.createElement("div", { className: "relative z-10 max-w-5xl mx-auto px-4 sm:px-6" }, /* @__PURE__ */ React.createElement("div", { className: "text-center pt-8 pb-6" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-center gap-2 mb-3" }, /* @__PURE__ */ React.createElement(Star, { className: "text-yellow-400 fill-yellow-400", size: 11 }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-sky-400" }, "Real Jobs \xB7 Real Pay \xB7 No Experience Needed"), /* @__PURE__ */ React.createElement(Star, { className: "text-yellow-400 fill-yellow-400", size: 11 })), /* @__PURE__ */ React.createElement("h1", { className: "fg-title text-white mb-2" }, "Your First Job", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", { className: "bg-gradient-to-r from-sky-400 via-purple-400 to-pink-400 bg-clip-text text-transparent" }, "Starts Here")), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 max-w-xs mx-auto mb-4" }, "Vetted entry-level opportunities. ", /* @__PURE__ */ React.createElement("span", { className: "text-sky-400 font-medium" }, "Earn, learn, and grow.")), !profileSetup && /* @__PURE__ */ React.createElement("button", { onClick: () => setShowProfileSetup(true), className: "inline-flex items-center gap-1.5 bg-gradient-to-r from-sky-500 to-purple-500 text-white fg-lbl px-4 py-2 rounded-full hover:opacity-90 active:scale-95 transition-all" }, /* @__PURE__ */ React.createElement(User, { size: 11 }), "Set up your profile \u2014 apply in one tap"), profileSetup && /* @__PURE__ */ React.createElement("div", { className: "inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 rounded-full px-3 py-1" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 11, className: "text-green-400" }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-green-400" }, "Profile ready \u2014 one-tap apply enabled"))), savedIds.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "mb-4 flex items-center gap-2 bg-white/3 border border-white/8 rounded-xl px-4 py-2.5" }, /* @__PURE__ */ React.createElement(BookmarkCheck, { size: 13, className: "text-sky-400 flex-shrink-0" }), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400" }, savedIds.length, " saved role", savedIds.length !== 1 ? "s" : "", " in your wishlist"), /* @__PURE__ */ React.createElement("button", { onClick: () => setCat("All"), className: "ml-auto fg-lbl text-sky-400 hover:text-sky-300" }, "View all")), /* @__PURE__ */ React.createElement("div", { className: "flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between mb-3" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2 w-full sm:w-52" }, /* @__PURE__ */ React.createElement(Search, { size: 13, className: "text-gray-500 flex-shrink-0" }), /* @__PURE__ */ React.createElement("input", { value: q, onChange: (e) => setQ(e.target.value), placeholder: "Search roles\u2026", className: "fg-inp bg-transparent text-white placeholder-gray-600 outline-none w-full", style: { fontSize: "14px", background: "transparent", border: "none", outline: "none", color: "#fff", width: "100%" } })), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-1.5 flex-wrap" }, /* @__PURE__ */ React.createElement(Filter, { size: 11, className: "text-gray-600 flex-shrink-0" }), CATS.map((c) => /* @__PURE__ */ React.createElement("button", { key: c, onClick: () => setCat(c), className: `chip fg-lbl rounded-full px-3 py-1 border ${cat === c ? "bg-white text-black border-white" : "bg-white/5 text-gray-400 border-white/10 hover:border-white/20"}` }, c)))), /* @__PURE__ */ React.createElement("div", { className: "mb-3 flex items-center justify-between" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-700" }, filtered.length, " role", filtered.length !== 1 ? "s" : "", " available"), /* @__PURE__ */ React.createElement("button", { onClick: () => setView("post"), className: "fg-lbl text-yellow-400 flex items-center gap-1 hover:text-yellow-300" }, /* @__PURE__ */ React.createElement(Crown, { size: 10 }), "Post a job from \xA310")), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5" }, filtered.map((job) => {
+    const I = job.icon;
+    const saved = savedIds.includes(job.id);
+    const applied = appliedIds[job.id];
+    return /* @__PURE__ */ React.createElement("div", { key: job.id, className: `jcard relative bg-gray-950 border rounded-2xl p-3.5 overflow-hidden group ${job.premium ? "border-yellow-400/30 pm" : "border-white/[0.06]"}`, onClick: () => setSelId(job.id) }, /* @__PURE__ */ React.createElement("div", { className: "absolute inset-x-0 top-0 h-px", style: { background: `linear-gradient(90deg,transparent,${job.color}60,transparent)` } }), /* @__PURE__ */ React.createElement("button", { onClick: (e) => {
+      e.stopPropagation();
+      toggleSave(job.id);
+    }, className: "absolute top-2.5 right-2.5 p-1 rounded-full hover:bg-white/10 transition-all z-10" }, saved ? /* @__PURE__ */ React.createElement(BookmarkCheck, { size: 12, className: "text-sky-400" }) : /* @__PURE__ */ React.createElement(Bookmark, { size: 12, className: "text-gray-600" })), job.premium && /* @__PURE__ */ React.createElement("div", { className: "absolute top-2.5 left-2.5 flex items-center gap-0.5 bg-yellow-400/10 rounded-full px-1.5 py-0.5" }, /* @__PURE__ */ React.createElement(Crown, { size: 8, className: "text-yellow-400" })), /* @__PURE__ */ React.createElement("div", { className: "mb-2.5 mt-1 inline-flex p-1.5 rounded-xl", style: { background: `${job.color}18` } }, /* @__PURE__ */ React.createElement(I, { size: 14, style: { color: job.color } })), /* @__PURE__ */ React.createElement("h3", { className: "fg-lbl text-white leading-snug mb-0.5 pr-4" }, job.title), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-600 mb-0.5", style: { letterSpacing: "0.06em" } }, job.cat), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl mb-2.5", style: { color: job.color, letterSpacing: "0.06em" } }, job.pay), applied ? /* @__PURE__ */ React.createElement("span", { className: "fg-lbl rounded-full px-2 py-0.5", style: { background: `${STATUS_COLORS[applied.status]}18`, color: STATUS_COLORS[applied.status] } }, applied.status) : /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-1 group-hover:gap-1.5 transition-all" }, /* @__PURE__ */ React.createElement("span", { className: "fg-lbl", style: { color: job.color } }, "Apply"), /* @__PURE__ */ React.createElement(ArrowRight, { size: 10, style: { color: job.color } })));
+  }))), view === "post" && /* @__PURE__ */ React.createElement("div", { className: "relative z-10 max-w-xl mx-auto px-4 sm:px-6 pt-8 pb-4" }, postStep === 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "text-center mb-7" }, /* @__PURE__ */ React.createElement("div", { className: "inline-flex items-center gap-1.5 lbadge bg-green-500/10 border border-green-500/30 rounded-full px-3 py-1 mb-3" }, /* @__PURE__ */ React.createElement(Tag, { size: 11, className: "text-green-400" }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-green-400" }, "Launch Prices \u2014 Register Now")), /* @__PURE__ */ React.createElement("h2", { className: "fg-title text-white mb-2" }, "Post a Job"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 max-w-sm mx-auto" }, "Reach motivated young talent. Every listing goes through our approval queue before going live.")), /* @__PURE__ */ React.createElement("div", { className: "grid sm:grid-cols-2 gap-4 mb-6" }, PLANS.map((pl) => /* @__PURE__ */ React.createElement("div", { key: pl.id, className: `pcard relative rounded-2xl p-5 border cursor-pointer ${pl.highlight ? "bg-gray-950 border-yellow-400/40" : "bg-gray-950 border-white/10"}`, onClick: () => {
+    setSelPlan(pl);
+    setPostStep(1);
+  } }, /* @__PURE__ */ React.createElement("div", { className: "absolute inset-x-0 top-0 h-px rounded-t-2xl", style: { background: `linear-gradient(90deg,transparent,${pl.color}80,transparent)` } }), /* @__PURE__ */ React.createElement("div", { className: "inline-flex items-center gap-1 rounded-full px-2.5 py-1 mb-3", style: { background: `${pl.color}18` } }, /* @__PURE__ */ React.createElement("span", { className: "fg-lbl", style: { color: pl.color, fontSize: "0.55rem" } }, pl.tag)), /* @__PURE__ */ React.createElement("div", { className: "flex items-end gap-1 mb-1" }, /* @__PURE__ */ React.createElement("span", { className: "text-white text-2xl font-bold", style: { letterSpacing: "-0.03em" } }, pl.price), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-gray-500 mb-1" }, pl.period)), /* @__PURE__ */ React.createElement("p", { className: "fg-sec text-white mb-3" }, pl.label), /* @__PURE__ */ React.createElement("ul", { className: "space-y-2 mb-4" }, pl.features.map((f, i) => /* @__PURE__ */ React.createElement("li", { key: i, className: "flex items-start gap-2" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 11, style: { color: pl.color }, className: "flex-shrink-0 mt-0.5" }), /* @__PURE__ */ React.createElement("span", { className: "fg-bod text-gray-400" }, f)))), /* @__PURE__ */ React.createElement("button", { className: "w-full py-2.5 rounded-xl fg-lbl tracking-widest text-black font-bold active:scale-95 transition-all", style: { background: `linear-gradient(135deg,${pl.color},${pl.color}cc)` } }, pl.cta, " ", /* @__PURE__ */ React.createElement(ChevronRight, { size: 11, className: "inline" }))))), /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-3 bg-white/3 border border-white/8 rounded-xl p-4" }, /* @__PURE__ */ React.createElement(Clock, { size: 14, className: "text-gray-500 flex-shrink-0 mt-0.5" }), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-600" }, "Submit \u2192 we review within 24 hrs \u2192 pay via Stripe \u2192 go live. Premium listings pin to the top with a Crown badge."))), postStep === 1 && selPlan && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3 mb-5" }, /* @__PURE__ */ React.createElement("button", { onClick: () => setPostStep(0), className: "fg-lbl text-gray-500 hover:text-gray-300 transition-colors" }, "\u2190 Back"), /* @__PURE__ */ React.createElement("div", { className: "h-px flex-1 bg-white/10" }), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-1.5 px-3 py-1 rounded-full", style: { background: `${selPlan.color}15`, border: `1px solid ${selPlan.color}40` } }, selPlan.highlight && /* @__PURE__ */ React.createElement(Crown, { size: 11, style: { color: selPlan.color } }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl", style: { color: selPlan.color } }, selPlan.label, " \xB7 ", selPlan.price))), /* @__PURE__ */ React.createElement("h2", { className: "fg-sec text-white mb-1" }, "Tell us about the role"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mb-5" }, "Complete your details then pay securely via Stripe."), postErr && /* @__PURE__ */ React.createElement("div", { className: "mb-4 p-3 rounded-xl fg-bod bg-red-50 border border-red-200 text-red-700" }, postErr), /* @__PURE__ */ React.createElement("div", { className: "bg-white rounded-2xl p-5 space-y-4" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400 mb-2 flex items-center gap-1.5" }, /* @__PURE__ */ React.createElement(Building2, { size: 11 }), "Your Details"), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-2.5" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Company *"), /* @__PURE__ */ React.createElement("input", { name: "company", value: postForm.company, onChange: (e) => setPostForm((p) => ({ ...p, company: e.target.value })), className: ic, placeholder: "Joe's Caf\xE9" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Your Name *"), /* @__PURE__ */ React.createElement("input", { name: "contactName", value: postForm.contactName, onChange: (e) => setPostForm((p) => ({ ...p, contactName: e.target.value })), className: ic, placeholder: "Full name" }))), /* @__PURE__ */ React.createElement("div", { className: "mt-2.5" }, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Contact Email *"), /* @__PURE__ */ React.createElement("input", { type: "email", value: postForm.contactEmail, onChange: (e) => setPostForm((p) => ({ ...p, contactEmail: e.target.value })), className: ic, placeholder: "you@business.com" }))), /* @__PURE__ */ React.createElement("div", { className: "h-px bg-gray-100" }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400 mb-2 flex items-center gap-1.5" }, /* @__PURE__ */ React.createElement(Briefcase, { size: 11 }), "Job Details"), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-2.5" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Job Title *"), /* @__PURE__ */ React.createElement("input", { value: postForm.jobTitle, onChange: (e) => setPostForm((p) => ({ ...p, jobTitle: e.target.value })), className: ic, placeholder: "e.g. Barista" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Category *"), /* @__PURE__ */ React.createElement("select", { value: postForm.category, onChange: (e) => setPostForm((p) => ({ ...p, category: e.target.value })), className: ic }, ["Local", "Digital", "Hospitality", "Education", "Other"].map((c) => /* @__PURE__ */ React.createElement("option", { key: c }, c))))), /* @__PURE__ */ React.createElement("div", { className: "mt-2.5" }, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Pay / Rate *"), /* @__PURE__ */ React.createElement("input", { value: postForm.pay, onChange: (e) => setPostForm((p) => ({ ...p, pay: e.target.value })), className: ic, placeholder: "\xA38/hr or \xA350 per project" })), /* @__PURE__ */ React.createElement("div", { className: "mt-2.5" }, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Role Description *"), /* @__PURE__ */ React.createElement("textarea", { value: postForm.description, onChange: (e) => setPostForm((p) => ({ ...p, description: e.target.value })), rows: 3, className: `${ic} resize-none`, placeholder: "Day to day responsibilities\u2026" })), /* @__PURE__ */ React.createElement("div", { className: "mt-2.5" }, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Requirements (optional)"), /* @__PURE__ */ React.createElement("textarea", { value: postForm.requirements, onChange: (e) => setPostForm((p) => ({ ...p, requirements: e.target.value })), rows: 2, className: `${ic} resize-none`, placeholder: "e.g. Weekend availability\u2026" }))), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-50 rounded-xl p-3 flex items-start gap-2" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 13, className: "text-sky-400 flex-shrink-0 mt-0.5" }), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500" }, "Submit your details and you'll be taken directly to Stripe to pay ", /* @__PURE__ */ React.createElement("span", { className: "font-medium text-gray-700" }, selPlan.price), ". Your listing goes live within 24 hrs of payment.")), /* @__PURE__ */ React.createElement("button", { onClick: submitPost, disabled: postSub, className: "w-full py-3 rounded-xl fg-lbl tracking-widest text-black font-bold active:scale-95 disabled:opacity-50 transition-all", style: { background: `linear-gradient(135deg,${selPlan.color},${selPlan.color}bb)` } }, postSub ? "Submitting\u2026" : `Submit for Review \u2014 ${selPlan.price}`))), postStep === 2 && /* @__PURE__ */ React.createElement("div", { className: "text-center py-10" }, /* @__PURE__ */ React.createElement("div", { className: "inline-flex p-5 rounded-full bg-green-500/10 border border-green-500/20 mb-5" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 36, className: "text-green-400" })), /* @__PURE__ */ React.createElement("h2", { className: "fg-sec text-white mb-2" }, "Details Received!"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 max-w-xs mx-auto mb-2" }, "Complete your payment below to secure your listing. You'll go live within 24 hrs of payment."), selPlan && /* @__PURE__ */ React.createElement("a", { href: selPlan.stripeUrl, target: "_blank", rel: "noreferrer", className: "inline-flex items-center gap-2 w-full max-w-xs mx-auto justify-center py-3.5 rounded-xl fg-lbl tracking-widest text-black font-bold mb-4 transition-all", style: { background: `linear-gradient(135deg,${selPlan.color},${selPlan.color}bb)`, display: "flex" } }, /* @__PURE__ */ React.createElement("span", null, "🔒 Pay ", selPlan.price, " via Stripe →")), /* @__PURE__ */ React.createElement("div", { className: "flex flex-col sm:flex-row gap-2 justify-center" }, /* @__PURE__ */ React.createElement("button", { onClick: () => {
+    setPostStep(0);
+    setSelPlan(null);
+    setPostForm({ company: "", contactName: "", contactEmail: "", jobTitle: "", category: "Local", pay: "", description: "", requirements: "" });
+  }, className: "fg-lbl text-gray-400 border border-white/10 rounded-full px-4 py-2 hover:border-white/20 transition-all" }, "Post Another"), /* @__PURE__ */ React.createElement("button", { onClick: () => setView("jobs"), className: "fg-lbl text-black bg-white rounded-full px-4 py-2 hover:bg-gray-100 transition-all" }, "Browse Jobs")))), view === "profile" && /* @__PURE__ */ React.createElement("div", { className: "relative z-10 max-w-xl mx-auto px-4 sm:px-6 pt-8 pb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "fg-title text-white mb-1" }, "My Profile"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mb-6" }, "Build your profile once. Apply to any role in one tap."), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-950 border border-white/10 rounded-2xl p-5 mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-4 mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-purple-500 flex items-center justify-center flex-shrink-0" }, /* @__PURE__ */ React.createElement("span", { className: "text-white font-bold text-xl" }, profile.name ? profile.name[0].toUpperCase() : "?")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "fg-sec text-white" }, profile.name || "Your Name"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500" }, profile.email || "your@email.com"), profileSetup && /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-1 mt-0.5" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 10, className: "text-green-400" }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-green-400" }, "Profile active"))), /* @__PURE__ */ React.createElement("button", { onClick: () => setShowProfileSetup(true), className: "ml-auto fg-lbl text-sky-400 border border-sky-400/30 rounded-full px-3 py-1.5 hover:bg-sky-400/10 transition-all" }, "Edit")), profile.bio && /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-400 mb-3" }, profile.bio), /* @__PURE__ */ React.createElement("div", { className: "mb-1" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-500 mb-2" }, "Earned Badges"), /* @__PURE__ */ React.createElement("div", { className: "flex flex-wrap gap-1.5" }, earnedBadges.map((b) => /* @__PURE__ */ React.createElement("div", { key: b, className: "badge-shine flex items-center gap-1 bg-gradient-to-r from-yellow-400/20 to-amber-400/10 border border-yellow-400/30 rounded-full px-2.5 py-1" }, /* @__PURE__ */ React.createElement(Award, { size: 10, className: "text-yellow-400" }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-yellow-300", style: { fontSize: "0.55rem" } }, b))), earnedBadges.length === 0 && /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-600" }, "Complete gigs to earn badges")))), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-950 border border-white/10 rounded-2xl p-5 mb-4" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400 mb-1" }, "Available Badges"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-600 mb-3" }, "Complete a gig in a skill area to unlock its badge. Badges boost your profile visibility."), /* @__PURE__ */ React.createElement("div", { className: "flex flex-wrap gap-1.5" }, ALL_BADGES.filter((b) => !earnedBadges.includes(b)).map((b) => /* @__PURE__ */ React.createElement("button", { key: b, onClick: () => claimBadge(b), className: "flex items-center gap-1 bg-white/5 border border-white/10 rounded-full px-2.5 py-1 hover:border-white/20 transition-all" }, /* @__PURE__ */ React.createElement(Award, { size: 10, className: "text-gray-500" }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-gray-500", style: { fontSize: "0.55rem" } }, b))))), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-950 border border-white/10 rounded-2xl p-5" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2 mb-1" }, /* @__PURE__ */ React.createElement(Gift, { size: 14, className: "text-purple-400" }), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-purple-400" }, "Referral Programme")), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mb-3" }, "Share your code. You and your friend both get ", /* @__PURE__ */ React.createElement("span", { className: "text-white font-medium" }, "priority application review"), "."), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl p-3 mb-3" }, /* @__PURE__ */ React.createElement("span", { className: "fg-sec text-white flex-1", style: { letterSpacing: "0.08em", fontSize: "0.9rem" } }, refCode), /* @__PURE__ */ React.createElement("button", { onClick: copyRef, className: "flex items-center gap-1 fg-lbl text-sky-400 hover:text-sky-300 transition-all" }, refCopied ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Check, { size: 12 }), "Copied") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Copy, { size: 12 }), "Copy"))), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ React.createElement("a", { href: `https://wa.me/?text=Hey! Use my FirstGig code ${refCode} to get priority review on your applications \u{1F680}`, target: "_blank", rel: "noreferrer", className: "flex-1 fg-lbl text-center text-white bg-green-600 hover:bg-green-500 rounded-xl py-2 transition-all" }, "Share on WhatsApp"), /* @__PURE__ */ React.createElement("a", { href: `mailto:?subject=Join FirstGig&body=Hey! Use code ${refCode} to get priority review on FirstGig \u2014 firstgig.co`, className: "flex-1 fg-lbl text-center text-gray-300 bg-white/10 hover:bg-white/15 rounded-xl py-2 transition-all" }, "Share via Email")))), view === "dashboard" && /* @__PURE__ */ React.createElement("div", { className: "relative z-10 max-w-xl mx-auto px-4 sm:px-6 pt-8 pb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "fg-title text-white mb-1" }, "My Dashboard"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mb-5" }, "Track your applications and saved roles."), /* @__PURE__ */ React.createElement("div", { className: "relative bg-gray-950 border border-emerald-400/30 rounded-2xl p-5 mb-4 overflow-hidden" }, /* @__PURE__ */ React.createElement("div", { className: "absolute inset-x-0 top-0 h-px", style: { background: "linear-gradient(90deg,transparent,#4ade8080,transparent)" } }), /* @__PURE__ */ React.createElement("div", { className: "flex items-start justify-between mb-3" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-emerald-400 mb-1" }, "\u{1F4B0} Earnings Balance"), /* @__PURE__ */ React.createElement("p", { className: "text-3xl font-bold text-white", style: { letterSpacing: "-0.04em" } }, "\xA30.00"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mt-0.5" }, "Protected \xB7 Ready to claim")), /* @__PURE__ */ React.createElement("button", { className: "fg-lbl text-emerald-400 border border-emerald-400/30 rounded-full px-3 py-1.5 hover:bg-emerald-400/10 transition-all" }, "Withdraw")), /* @__PURE__ */ React.createElement("div", { className: "h-px bg-white/5 mb-3" }), /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-2 mb-3" }, /* @__PURE__ */ React.createElement("div", { className: "p-1.5 rounded-lg bg-emerald-400/10 flex-shrink-0 mt-0.5" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 12, className: "text-emerald-400" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-white mb-0.5" }, "You always get paid first"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500" }, "Funds sit in a protected account until the job is done. We release payment to you \u2014 never the other way around."))), /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-2 mb-3" }, /* @__PURE__ */ React.createElement("div", { className: "p-1.5 rounded-lg bg-sky-400/10 flex-shrink-0 mt-0.5" }, /* @__PURE__ */ React.createElement(Briefcase, { size: 12, className: "text-sky-400" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-white mb-0.5" }, "Dispute protection"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500" }, "If you're not paid, we fight your case. Our team investigates every dispute and you're protected throughout."))), /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-2" }, /* @__PURE__ */ React.createElement("div", { className: "p-1.5 rounded-lg bg-purple-400/10 flex-shrink-0 mt-0.5" }, /* @__PURE__ */ React.createElement(Star, { size: 12, className: "text-purple-400" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-white mb-0.5" }, "Safer for everyone"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500" }, "Pay via the app protects buyers and sellers. Funds are held securely \u2014 released only when both sides are happy."))), /* @__PURE__ */ React.createElement("div", { className: "mt-4 flex gap-2" }, /* @__PURE__ */ React.createElement("button", { onClick: () => { setShowAddPayment(true); setGigPayErr(''); setGigPayForm({ jobTitle: '', employer: '', amount: '', date: '', notes: ''  }); }, className: "flex-1 fg-lbl text-black bg-gradient-to-r from-emerald-400 to-green-500 rounded-xl py-2.5 font-bold active:scale-95 transition-all" }, "+ Add a Gig Payment"), /* @__PURE__ */ React.createElement("button", { onClick: () => setShowPaymentHistory((p) => !p), className: "flex-1 fg-lbl text-gray-300 border border-white/10 rounded-xl py-2.5 hover:bg-white/5 transition-all" }, showPaymentHistory ? "Hide History" : "Payment History"))), showPaymentHistory && /* @__PURE__ */ React.createElement("div", { className: "bg-gray-950 border border-white/10 rounded-2xl overflow-hidden mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "px-4 py-3 border-b border-white/5 flex items-center justify-between" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400" }, "Payment History"), /* @__PURE__ */ React.createElement("button", { onClick: () => setShowPaymentHistory(false), className: "text-gray-600 hover:text-gray-400 transition-all" }, /* @__PURE__ */ React.createElement(X, { size: 13 }))), gigPayments.length === 0 ? /* @__PURE__ */ React.createElement("div", { className: "px-4 py-8 text-center" }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: "2rem", lineHeight: 1, marginBottom: "10px" } }, "💳"), /* @__PURE__ */ React.createElement("p", { className: "fg-sec text-gray-500 mb-1" }, "No payments yet"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-700" }, "Completed gig payments will appear here.")) : gigPayments.map((p, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: "flex items-center gap-3 px-4 py-3 border-b border-white/5 last:border-0" }, /* @__PURE__ */ React.createElement("div", { className: "p-2 rounded-xl bg-emerald-400/10 flex-shrink-0" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 13, className: "text-emerald-400" })), /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-white", style: { overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" } }, p.jobTitle), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-600" }, p.employer, p.date ? " · " + p.date : "")), /* @__PURE__ */ React.createElement("p", { className: "fg-sec text-emerald-400 flex-shrink-0" }, "£", parseFloat(p.amount).toFixed(2))))), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-3 gap-2.5 mb-5" }, [
+    { label: "Applied", val: Object.keys(appliedIds).length, color: "#38bdf8" },
+    { label: "Saved", val: savedIds.length, color: "#c084fc" },
+    { label: "Badges", val: earnedBadges.length, color: "#facc15" }
+  ].map((s) => /* @__PURE__ */ React.createElement("div", { key: s.label, className: "bg-gray-950 border border-white/8 rounded-2xl p-4 text-center" }, /* @__PURE__ */ React.createElement("p", { className: "text-2xl font-bold text-white", style: { letterSpacing: "-0.04em", color: s.color } }, s.val), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-500 mt-0.5" }, s.label)))), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-950 border border-white/10 rounded-2xl overflow-hidden mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "px-4 py-3 border-b border-white/5" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400" }, "Applications")), Object.keys(appliedIds).length === 0 ? /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-600 p-4 text-center" }, "No applications yet") : Object.entries(appliedIds).map(([id, a]) => {
+    const job = JOBS.find((j) => j.id === parseInt(id));
+    if (!job) return null;
+    const I = job.icon;
+    return /* @__PURE__ */ React.createElement("div", { key: id, className: "flex items-center gap-3 px-4 py-3 border-b border-white/5 last:border-0 hover:bg-white/3 transition-all" }, /* @__PURE__ */ React.createElement("div", { className: "p-2 rounded-xl flex-shrink-0", style: { background: `${job.color}18` } }, /* @__PURE__ */ React.createElement(I, { size: 14, style: { color: job.color } })), /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-white leading-snug truncate" }, job.title), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-600" }, a.date)), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl rounded-full px-2.5 py-1 flex-shrink-0", style: { background: `${STATUS_COLORS[a.status]}18`, color: STATUS_COLORS[a.status] } }, a.status));
+  })), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-950 border border-white/10 rounded-2xl overflow-hidden mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "px-4 py-3 border-b border-white/5" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400" }, "Saved Roles")), savedIds.length === 0 ? /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-600 p-4 text-center" }, "No saved roles yet") : savedIds.map((id) => {
+    const job = JOBS.find((j) => j.id === id);
+    if (!job) return null;
+    const I = job.icon;
+    return /* @__PURE__ */ React.createElement("div", { key: id, className: "flex items-center gap-3 px-4 py-3 border-b border-white/5 last:border-0" }, /* @__PURE__ */ React.createElement("div", { className: "p-2 rounded-xl flex-shrink-0", style: { background: `${job.color}18` } }, /* @__PURE__ */ React.createElement(I, { size: 14, style: { color: job.color } })), /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-white truncate" }, job.title), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl", style: { color: job.color } }, job.pay)), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ React.createElement("button", { onClick: () => setSelId(id), className: "fg-lbl text-sky-400 hover:text-sky-300 border border-sky-400/20 rounded-full px-2.5 py-1 transition-all" }, "Apply"), /* @__PURE__ */ React.createElement("button", { onClick: () => toggleSave(id), className: "text-gray-600 hover:text-red-400 transition-all" }, /* @__PURE__ */ React.createElement(X, { size: 13 }))));
+  })), /* @__PURE__ */ React.createElement("div", { className: "bg-gray-950 border border-white/10 rounded-2xl p-4" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Bell, { size: 14, className: notifOn ? "text-sky-400" : "text-gray-600" }), /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400" }, "Push Notifications")), /* @__PURE__ */ React.createElement("button", { onClick: () => {
+    setNotifOn((p) => !p);
+    showToast(notifOn ? "Notifications off" : "Notifications on \u2713");
+  }, className: `w-10 h-5 rounded-full transition-all relative ${notifOn ? "bg-sky-500" : "bg-gray-800"}` }, /* @__PURE__ */ React.createElement("div", { className: `absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-all ${notifOn ? "left-5" : "left-0.5"}` }))), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-600 mt-1.5" }, "Get alerts when new roles drop or your application status changes."))), selId && sel && /* @__PURE__ */ React.createElement("div", { className: "fixed inset-0 bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center z-50 p-0 sm:p-4", onClick: (e) => e.target === e.currentTarget && (setSelId(null), setApplyErr("")) }, /* @__PURE__ */ React.createElement("div", { className: "mscroll bg-white w-full sm:max-w-lg sm:rounded-3xl rounded-t-3xl shadow-2xl" }, /* @__PURE__ */ React.createElement("div", { className: `h-1 bg-gradient-to-r ${sel.gradient} sm:rounded-t-3xl rounded-t-3xl` }), /* @__PURE__ */ React.createElement("div", { className: "sticky top-0 bg-white px-5 pt-5 pb-4 flex items-start justify-between border-b border-gray-100 z-10" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ React.createElement("h3", { className: "fg-sec text-gray-900" }, sel.title), sel.premium && /* @__PURE__ */ React.createElement(Crown, { size: 13, className: "text-yellow-500" })), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2 mt-0.5" }, /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-gray-400" }, sel.brand), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl px-2 py-0.5 rounded-full", style: { background: `${sel.color}18`, color: sel.color } }, sel.pay))), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2 ml-4" }, /* @__PURE__ */ React.createElement("button", { onClick: () => toggleSave(sel.id), className: "p-2 rounded-full hover:bg-gray-100 transition-all" }, savedIds.includes(sel.id) ? /* @__PURE__ */ React.createElement(BookmarkCheck, { size: 16, className: "text-sky-400" }) : /* @__PURE__ */ React.createElement(Bookmark, { size: 16, className: "text-gray-400" })), /* @__PURE__ */ React.createElement("button", { onClick: () => {
+    setSelId(null);
+    setApplyErr("");
+  }, className: "bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-all" }, /* @__PURE__ */ React.createElement(X, { size: 16, className: "text-gray-500" })))), /* @__PURE__ */ React.createElement("div", { className: "px-5 py-5" }, /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mb-3" }, sel.description), /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("p", { className: "fg-lbl text-gray-400 mb-1.5" }, "You'll need"), /* @__PURE__ */ React.createElement("ul", { className: "space-y-1" }, sel.req.map((r, i) => /* @__PURE__ */ React.createElement("li", { key: i, className: "fg-bod text-gray-600 flex gap-2" }, /* @__PURE__ */ React.createElement("span", { style: { color: sel.color } }, "\u2022"), r)))), profileSetup && /* @__PURE__ */ React.createElement("div", { className: "mb-4 flex items-center gap-2 bg-sky-50 border border-sky-200 rounded-xl p-3" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 13, className: "text-sky-500 flex-shrink-0" }), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-sky-700" }, "Profile auto-filled from your saved profile.")), applyErr && /* @__PURE__ */ React.createElement("div", { className: "mb-3 p-3 rounded-xl fg-bod bg-red-50 border border-red-200 text-red-700" }, applyErr), appliedIds[sel.id] ? /* @__PURE__ */ React.createElement("div", { className: "text-center py-6" }, /* @__PURE__ */ React.createElement(CheckCircle, { size: 32, className: "text-green-400 mx-auto mb-2" }), /* @__PURE__ */ React.createElement("p", { className: "fg-sec text-gray-900" }, "Already applied!"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mt-1" }, "Status: ", /* @__PURE__ */ React.createElement("span", { style: { color: STATUS_COLORS[appliedIds[sel.id].status] } }, appliedIds[sel.id].status))) : /* @__PURE__ */ React.createElement("div", { className: "space-y-3" }, /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-2.5" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Full Name *"), /* @__PURE__ */ React.createElement("input", { type: "text", value: applyForm.name, onChange: (e) => setApplyForm((p) => ({ ...p, name: e.target.value })), className: ic, placeholder: "Your name" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Age *"), /* @__PURE__ */ React.createElement("input", { type: "number", value: applyForm.age, onChange: (e) => setApplyForm((p) => ({ ...p, age: e.target.value })), className: ic, placeholder: "Age" }))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Email *"), /* @__PURE__ */ React.createElement("input", { type: "email", value: applyForm.email, onChange: (e) => setApplyForm((p) => ({ ...p, email: e.target.value })), className: ic, placeholder: "your@email.com" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Why do you want this? *"), /* @__PURE__ */ React.createElement("textarea", { value: applyForm.why, onChange: (e) => setApplyForm((p) => ({ ...p, why: e.target.value })), rows: 3, className: `${ic} resize-none`, placeholder: "Tell us what interests you\u2026" })), /* @__PURE__ */ React.createElement("button", { onClick: applyNow, disabled: applying, className: `w-full text-white font-semibold py-3 rounded-xl active:scale-95 transition-all fg-lbl tracking-widest disabled:opacity-50 bg-gradient-to-r ${sel.gradient}` }, applying ? "Submitting\u2026" : profileSetup ? "One-Tap Apply \u26A1" : "Submit Application"), /* @__PURE__ */ React.createElement("a", { href: "mailto:hello@holdingalpha.co", className: "flex items-center justify-center gap-1.5 fg-lbl text-gray-400 hover:text-gray-600 py-1" }, /* @__PURE__ */ React.createElement(Mail, { size: 11 }), "Questions? hello@holdingalpha.co"))), /* @__PURE__ */ React.createElement("div", { className: "h-4 sm:h-0" }))), showProfileSetup && /* @__PURE__ */ React.createElement("div", { className: "fixed inset-0 bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center z-50 p-0 sm:p-4", onClick: (e) => e.target === e.currentTarget && setShowProfileSetup(false) }, /* @__PURE__ */ React.createElement("div", { className: "mscroll bg-white w-full sm:max-w-md sm:rounded-3xl rounded-t-3xl shadow-2xl" }, /* @__PURE__ */ React.createElement("div", { className: "h-1 bg-gradient-to-r from-sky-400 via-purple-400 to-pink-400 sm:rounded-t-3xl rounded-t-3xl" }), /* @__PURE__ */ React.createElement("div", { className: "sticky top-0 bg-white px-5 pt-5 pb-4 flex items-center justify-between border-b border-gray-100" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h3", { className: "fg-sec text-gray-900" }, "Build Your Profile"), /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mt-0.5" }, "Set up once, apply anywhere in one tap")), /* @__PURE__ */ React.createElement("button", { onClick: () => setShowProfileSetup(false), className: "bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-all" }, /* @__PURE__ */ React.createElement(X, { size: 16, className: "text-gray-500" }))), /* @__PURE__ */ React.createElement("div", { className: "px-5 py-5 space-y-3" }, /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-2.5" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Full Name *"), /* @__PURE__ */ React.createElement("input", { value: profile.name, onChange: (e) => setProfile((p) => ({ ...p, name: e.target.value })), className: ic, placeholder: "Your name" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Age"), /* @__PURE__ */ React.createElement("input", { type: "number", value: profile.age, onChange: (e) => setProfile((p) => ({ ...p, age: e.target.value })), className: ic, placeholder: "Age" }))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Email *"), /* @__PURE__ */ React.createElement("input", { type: "email", value: profile.email, onChange: (e) => setProfile((p) => ({ ...p, email: e.target.value })), className: ic, placeholder: "your@email.com" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Short Bio"), /* @__PURE__ */ React.createElement("textarea", { value: profile.bio, onChange: (e) => setProfile((p) => ({ ...p, bio: e.target.value })), rows: 2, className: `${ic} resize-none`, placeholder: "Tell employers a little about yourself\u2026" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-2" }, "Skills (select all that apply)"), /* @__PURE__ */ React.createElement("div", { className: "flex flex-wrap gap-1.5" }, ALL_BADGES.map((b) => {
+    const on = profileSkills.includes(b);
+    return /* @__PURE__ */ React.createElement("button", { key: b, onClick: () => setProfileSkills((p) => on ? p.filter((x) => x !== b) : [...p, b]), className: `flex items-center gap-1 rounded-full px-2.5 py-1 border transition-all fg-lbl ${on ? "bg-sky-50 border-sky-300 text-sky-700" : "bg-gray-50 border-gray-200 text-gray-500 hover:border-gray-300"}`, style: { fontSize: "0.55rem" } }, on && /* @__PURE__ */ React.createElement(Check, { size: 9 }), b);
+  }))), /* @__PURE__ */ React.createElement("button", { onClick: saveProfile, className: "w-full bg-gradient-to-r from-sky-400 to-purple-500 text-white py-3 rounded-xl fg-lbl tracking-widest font-bold active:scale-95 transition-all" }, "Save Profile \u26A1")), /* @__PURE__ */ React.createElement("div", { className: "h-4 sm:h-0" }))), toast && /* @__PURE__ */ React.createElement(Toast, { msg: toast, onDone: () => setToast(null) }), showAddPayment && /* @__PURE__ */ React.createElement("div", { className: "fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4", style: { background: "rgba(0,0,0,0.82)", backdropFilter: "blur(12px)" }, onClick: (e) => e.target === e.currentTarget && setShowAddPayment(false) },
+  /* @__PURE__ */ React.createElement("div", { className: "mscroll bg-white w-full sm:max-w-md sm:rounded-3xl rounded-t-3xl shadow-2xl" },
+    /* @__PURE__ */ React.createElement("div", { className: "h-1 bg-gradient-to-r from-emerald-400 to-green-500 sm:rounded-t-3xl rounded-t-3xl" }),
+    /* @__PURE__ */ React.createElement("div", { className: "sticky top-0 bg-white px-5 pt-5 pb-4 flex items-start justify-between border-b border-gray-100" },
+      /* @__PURE__ */ React.createElement("div", null,
+        /* @__PURE__ */ React.createElement("h3", { className: "fg-sec text-gray-900" }, "Log a Gig Payment"),
+        /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-500 mt-0.5" }, "Record earnings from a completed gig")
+      ),
+      /* @__PURE__ */ React.createElement("button", { onClick: () => setShowAddPayment(false), className: "bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-all ml-4" },
+        /* @__PURE__ */ React.createElement(X, { size: 16, className: "text-gray-500" })
+      )
+    ),
+    /* @__PURE__ */ React.createElement("div", { className: "px-5 py-5 space-y-3" },
+      gigPayErr && /* @__PURE__ */ React.createElement("div", { className: "p-3 rounded-xl fg-bod bg-red-50 border border-red-200 text-red-700" }, gigPayErr),
+      /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-2.5" },
+        /* @__PURE__ */ React.createElement("div", null,
+          /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Job / Gig Title *"),
+          /* @__PURE__ */ React.createElement("input", { value: gigPayForm.jobTitle, onChange: (e) => setGigPayForm((p) => ({ ...p, jobTitle: e.target.value })), className: "fg-inp w-full px-3 py-2.5 border border-gray-200 rounded-xl text-gray-900 bg-gray-50 transition-all", style: { fontSize: "16px", outline: "none" }, placeholder: "e.g. Dog Walking" })
+        ),
+        /* @__PURE__ */ React.createElement("div", null,
+          /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Client / Employer *"),
+          /* @__PURE__ */ React.createElement("input", { value: gigPayForm.employer, onChange: (e) => setGigPayForm((p) => ({ ...p, employer: e.target.value })), className: "fg-inp w-full px-3 py-2.5 border border-gray-200 rounded-xl text-gray-900 bg-gray-50 transition-all", style: { fontSize: "16px", outline: "none" }, placeholder: "Name or business" })
+        )
+      ),
+      /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-2.5" },
+        /* @__PURE__ */ React.createElement("div", null,
+          /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Amount Paid (£) *"),
+          /* @__PURE__ */ React.createElement("input", { type: "number", min: "0", step: "0.01", value: gigPayForm.amount, onChange: (e) => setGigPayForm((p) => ({ ...p, amount: e.target.value })), className: "fg-inp w-full px-3 py-2.5 border border-gray-200 rounded-xl text-gray-900 bg-gray-50 transition-all", style: { fontSize: "16px", outline: "none" }, placeholder: "0.00" })
+        ),
+        /* @__PURE__ */ React.createElement("div", null,
+          /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Date"),
+          /* @__PURE__ */ React.createElement("input", { type: "date", value: gigPayForm.date, onChange: (e) => setGigPayForm((p) => ({ ...p, date: e.target.value })), className: "fg-inp w-full px-3 py-2.5 border border-gray-200 rounded-xl text-gray-900 bg-gray-50 transition-all", style: { fontSize: "16px", outline: "none" } })
+        )
+      ),
+      /* @__PURE__ */ React.createElement("div", null,
+        /* @__PURE__ */ React.createElement("label", { className: "fg-lbl text-gray-400 block mb-1" }, "Notes (optional)"),
+        /* @__PURE__ */ React.createElement("textarea", { value: gigPayForm.notes, onChange: (e) => setGigPayForm((p) => ({ ...p, notes: e.target.value })), rows: 2, className: "fg-inp w-full px-3 py-2.5 border border-gray-200 rounded-xl text-gray-900 bg-gray-50 resize-none transition-all", style: { fontSize: "16px", outline: "none" }, placeholder: "Any extra details…" })
+      ),
+      /* @__PURE__ */ React.createElement("button", {
+        onClick: () => {
+          if (!gigPayForm.jobTitle.trim() || !gigPayForm.employer.trim() || !gigPayForm.amount) { setGigPayErr('Please fill in all required fields.'); return; }
+          if (isNaN(parseFloat(gigPayForm.amount)) || parseFloat(gigPayForm.amount) <= 0) { setGigPayErr('Please enter a valid amount.'); return; }
+          setGigPaySubmitting(true); setGigPayErr('');
+          setTimeout(() => {
+            setGigPayments((prev) => [{ ...gigPayForm, date: gigPayForm.date || new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }), id: Date.now() }, ...prev]);
+            setGigPaySubmitting(false);
+            setShowAddPayment(false);
+            setShowPaymentHistory(true);
+            showToast('Payment logged! £' + parseFloat(gigPayForm.amount).toFixed(2) + ' added ✓');
+          }, 600);
+        },
+        disabled: gigPaySubmitting,
+        className: "w-full py-3 rounded-xl fg-lbl tracking-widest text-white font-bold active:scale-95 disabled:opacity-50 transition-all",
+        style: { background: "linear-gradient(135deg, #34d399, #22c55e)" }
+      }, gigPaySubmitting ? "Saving…" : "Log Payment")
+    ),
+    /* @__PURE__ */ React.createElement("div", { className: "h-4 sm:h-0" })
+  )
+),
+/* @__PURE__ */ React.createElement("nav", { className: "fixed bottom-0 inset-x-0 z-40 bg-black/95 backdrop-blur-md border-t border-white/8" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-5xl mx-auto flex items-center justify-around px-4 py-2 pb-safe" }, /* @__PURE__ */ React.createElement(NavBtn, { v: "jobs", label: "Jobs", icon: Briefcase }), /* @__PURE__ */ React.createElement(NavBtn, { v: "dashboard", label: "Dashboard", icon: LayoutDashboard, notif: Object.keys(appliedIds).length }), /* @__PURE__ */ React.createElement(NavBtn, { v: "post", label: "Post Job", icon: Building2 }), /* @__PURE__ */ React.createElement(NavBtn, { v: "profile", label: "Profile", icon: User }))), view === "jobs" && /* @__PURE__ */ React.createElement("footer", { className: "relative border-t border-white/5 mt-4 z-10" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-2" }, /* @__PURE__ */ React.createElement("p", { className: "fg-bod text-gray-600" }, "FirstGig \xB7 a ", /* @__PURE__ */ React.createElement("span", { className: "text-gray-400 font-medium" }, "Holding Alpha"), " product"), /* @__PURE__ */ React.createElement("a", { href: "mailto:hello@holdingalpha.co", className: "flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 hover:bg-white/10 transition-all" }, /* @__PURE__ */ React.createElement(Mail, { size: 11, className: "text-sky-400" }), /* @__PURE__ */ React.createElement("span", { className: "fg-lbl text-gray-400" }, "hello@holdingalpha.co")))));
+};
 
-    // Handle form submission
-    document.getElementById('application-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Application submitted! We\'ll be in touch soon.');
-      closeModal();
-    });
-
-    // Close modal on escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // Initialize
-    renderJobs();
-  </script>
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(window.__App));
+</script>
 </body>
 </html>
